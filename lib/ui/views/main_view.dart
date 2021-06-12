@@ -143,13 +143,29 @@ class _Background extends StatelessWidget {
   }
 
   Container _buildFrame() {
+    const borderWidth = 5.0;
+
     return Container(
       width: double.infinity,
       height: _posterHeight,
       decoration: const BoxDecoration(
+        color: Colors.transparent,
         border: Border(
           top: BorderSide(
             color: Color(0xff004aad),
+            width: borderWidth,
+          ),
+          right: BorderSide(
+            color: Color(0xff004aad),
+            width: borderWidth,
+          ),
+          bottom: BorderSide(
+            color: Color(0xff5271ff),
+            width: borderWidth,
+          ),
+          left: BorderSide(
+            color: Color(0xff5271ff),
+            width: borderWidth,
           ),
         ),
       ),
