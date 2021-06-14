@@ -30,86 +30,93 @@ class _Background extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final displayWidth = MediaQuery.of(context).size.width;
-    return Container(
-      color: const Color(0xff0f2636),
-      height: _posterHeight,
-      width: double.infinity,
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-            left: displayWidth * 0.005,
-            top: 5,
-            child: _buildCircle(
-              size: 50,
-              borderRadius: 20,
-            ),
+    final size = MediaQuery.of(context).size;
+    return Center(
+      child: Container(
+        height: _posterHeight,
+        width: size.width < 1000 ? size.width * .95 : 1000,
+        decoration: const BoxDecoration(
+          color: Color(0xff0f2636),
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(30),
+            bottomRight: Radius.circular(30),
           ),
-          Positioned(
-            top: 50,
-            child: _buildCircle(
-              size: 200,
+        ),
+        child: Stack(
+          children: <Widget>[
+            Positioned(
+              left: size.width * 0.005,
+              top: 5,
+              child: _buildCircle(
+                size: 50,
+                borderRadius: 20,
+              ),
             ),
-          ),
-          Positioned(
-            right: displayWidth * 0.25,
-            child: _buildCircle(
-              size: 150,
+            Positioned(
+              top: 50,
+              child: _buildCircle(
+                size: 200,
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 50,
-            right: displayWidth * 0.02,
-            child: _buildCircle(
-              size: 350,
+            Positioned(
+              right: size.width * 0.25,
+              child: _buildCircle(
+                size: 150,
+              ),
             ),
-          ),
-          Positioned(
-            left: displayWidth * 0.2,
-            top: -200,
-            child: _buildCircle(
-              size: 300,
+            Positioned(
+              bottom: 50,
+              right: size.width * 0.02,
+              child: _buildCircle(
+                size: 350,
+              ),
             ),
-          ),
-          Positioned(
-            left: displayWidth * 0.2,
-            bottom: 80,
-            child: _buildCircle(
-              size: 60,
-              borderRadius: 20,
+            Positioned(
+              left: size.width * 0.2,
+              top: -200,
+              child: _buildCircle(
+                size: 300,
+              ),
             ),
-          ),
-          Positioned(
-            left: displayWidth * 0.5,
-            top: 30,
-            child: _buildCircle(
-              size: 90,
-              borderRadius: 30,
+            Positioned(
+              left: size.width * 0.2,
+              bottom: 80,
+              child: _buildCircle(
+                size: 60,
+                borderRadius: 20,
+              ),
             ),
-          ),
-          Positioned(
-            left: displayWidth * 0.4,
-            top: 90,
-            child: _buildCircle(
-              size: 120,
+            Positioned(
+              left: size.width * 0.5,
+              top: 30,
+              child: _buildCircle(
+                size: 90,
+                borderRadius: 30,
+              ),
             ),
-          ),
-          Positioned(
-            left: displayWidth * 0.3,
-            top: 10,
-            child: _buildCircle(
-              size: 50,
+            Positioned(
+              left: size.width * 0.4,
+              top: 90,
+              child: _buildCircle(
+                size: 120,
+              ),
             ),
-          ),
-          Positioned(
-            left: displayWidth * 0.5,
-            bottom: -200,
-            child: _buildCircle(
-              size: 350,
+            Positioned(
+              left: size.width * 0.3,
+              top: 10,
+              child: _buildCircle(
+                size: 50,
+              ),
             ),
-          ),
-          _buildFrame(),
-        ],
+            Positioned(
+              left: size.width * 0.5,
+              bottom: -200,
+              child: _buildCircle(
+                size: 350,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -125,36 +132,6 @@ class _Background extends StatelessWidget {
       ),
     );
   }
-
-  Container _buildFrame() {
-    const borderWidth = 5.0;
-
-    return Container(
-      width: double.infinity,
-      height: _posterHeight,
-      decoration: const BoxDecoration(
-        color: Colors.transparent,
-        border: Border(
-          top: BorderSide(
-            color: Color(0xff004aad),
-            width: borderWidth,
-          ),
-          right: BorderSide(
-            color: Color(0xff004aad),
-            width: borderWidth,
-          ),
-          bottom: BorderSide(
-            color: Color(0xff5271ff),
-            width: borderWidth,
-          ),
-          left: BorderSide(
-            color: Color(0xff5271ff),
-            width: borderWidth,
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 class _Texts extends StatelessWidget {
@@ -162,12 +139,12 @@ class _Texts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final displayWidth = MediaQuery.of(context).size.width;
+    final size = MediaQuery.of(context).size;
     return SizedBox(
       width: 700,
       height: _posterHeight,
       // color: Colors.green,
-      child: displayWidth < _mobileDisplayBreakpoint
+      child: size.width < _mobileDisplayBreakpoint
           ? Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -178,7 +155,7 @@ class _Texts extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize:
-                            displayWidth < _mobileDisplayBreakpoint ? 50 : 64,
+                            size.width < _mobileDisplayBreakpoint ? 50 : 64,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -187,7 +164,7 @@ class _Texts extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize:
-                            displayWidth < _mobileDisplayBreakpoint ? 20 : 28,
+                            size.width < _mobileDisplayBreakpoint ? 20 : 28,
                       ),
                     ), */
                     AnimatedTextKit(
@@ -196,9 +173,8 @@ class _Texts extends StatelessWidget {
                           'Full Stack Development',
                           textStyle: TextStyle(
                             color: Colors.white,
-                            fontSize: displayWidth < _mobileDisplayBreakpoint
-                                ? 20
-                                : 28,
+                            fontSize:
+                                size.width < _mobileDisplayBreakpoint ? 20 : 28,
                           ),
                           speed: const Duration(
                             milliseconds: 100,
@@ -217,7 +193,7 @@ class _Texts extends StatelessWidget {
                 ),
                 SvgPicture.asset(
                   'images/ssmg-logo.svg',
-                  height: displayWidth < _mobileDisplayBreakpoint ? 100 : 150,
+                  height: size.width < _mobileDisplayBreakpoint ? 100 : 150,
                 ),
               ],
             )
