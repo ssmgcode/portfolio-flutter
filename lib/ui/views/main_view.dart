@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/ui/widgets/personal_information.dart';
 import 'package:portfolio/ui/widgets/presentation.dart';
 
 /// Displays the root page of the portfolio.
@@ -11,6 +12,7 @@ class MainView extends StatelessWidget {
     return Column(
       children: const <Widget>[
         Presentation(),
+        PersonalInformation(),
       ],
     );
   }
