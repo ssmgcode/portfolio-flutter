@@ -192,7 +192,7 @@ class _Texts extends StatelessWidget {
                   height: 20,
                 ),
                 SvgPicture.asset(
-                  'images/ssmg-logo.svg',
+                  'assets/ssmg-logo.svg',
                   height: size.width < _mobileDisplayBreakpoint ? 100 : 150,
                 ),
               ],
