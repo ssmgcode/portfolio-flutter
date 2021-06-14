@@ -10,12 +10,14 @@ class MainView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const <Widget>[
-        Presentation(),
-        FavoriteTechnoloiesPresentation(),
-        PersonalInformation(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: const <Widget>[
+          Presentation(),
+          FavoriteTechnoloiesPresentation(),
+          PersonalInformation(),
+        ],
+      ),
     );
   }
 }
