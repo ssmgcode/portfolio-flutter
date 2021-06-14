@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/ui/widgets/favorite_technologies_presentation.dart';
 import 'package:portfolio/ui/widgets/personal_information.dart';
 import 'package:portfolio/ui/widgets/presentation.dart';
 
@@ -12,6 +13,7 @@ class MainView extends StatelessWidget {
     return Column(
       children: const <Widget>[
         Presentation(),
+        FavoriteTechnoloiesPresentation(),
         PersonalInformation(),
       ],
     );
