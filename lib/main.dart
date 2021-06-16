@@ -18,6 +18,8 @@ class MyApp extends StatelessWidget {
       title: 'SSMG Code',
       theme: ThemeData(
         fontFamily: 'IBMPlexSans',
+        primaryColor: const Color(0xff0f2636),
+        scaffoldBackgroundColor: const Color(0xfff0f2f5),
       ),
       initialRoute: Flurorouter.rootRoute,
       onGenerateRoute: Flurorouter.router.generator,
