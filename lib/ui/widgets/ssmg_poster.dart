@@ -6,9 +6,9 @@ const double _mobileDisplayBreakpoint = 768;
 const double _posterHeight = 300;
 
 /// Main poster showing a presentation
-class Presentation extends StatelessWidget {
+class SSMGPoster extends StatelessWidget {
   /// Main poster showing a presentation
-  const Presentation({Key? key}) : super(key: key);
+  const SSMGPoster({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,101 +34,10 @@ class _Background extends StatelessWidget {
     return Center(
       child: Container(
         height: _posterHeight,
-        width: size.width < 1000 ? size.width * .95 : 1000,
-        decoration: const BoxDecoration(
-          color: Color(0xff0f2636),
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(30),
-            bottomRight: Radius.circular(30),
-          ),
+        width: size.width < 1000 ? size.width : 1000,
+        decoration: BoxDecoration(
+          color: Theme.of(context).accentColor,
         ),
-        child: Stack(
-          children: <Widget>[
-            Positioned(
-              left: size.width * 0.005,
-              top: 5,
-              child: _buildCircle(
-                size: 50,
-                borderRadius: 20,
-              ),
-            ),
-            Positioned(
-              top: 50,
-              child: _buildCircle(
-                size: 200,
-              ),
-            ),
-            Positioned(
-              right: size.width * 0.25,
-              child: _buildCircle(
-                size: 150,
-              ),
-            ),
-            Positioned(
-              bottom: 50,
-              right: size.width * 0.02,
-              child: _buildCircle(
-                size: 350,
-              ),
-            ),
-            Positioned(
-              left: size.width * 0.2,
-              top: -200,
-              child: _buildCircle(
-                size: 300,
-              ),
-            ),
-            Positioned(
-              left: size.width * 0.2,
-              bottom: 80,
-              child: _buildCircle(
-                size: 60,
-                borderRadius: 20,
-              ),
-            ),
-            Positioned(
-              left: size.width * 0.5,
-              top: 30,
-              child: _buildCircle(
-                size: 90,
-                borderRadius: 30,
-              ),
-            ),
-            Positioned(
-              left: size.width * 0.4,
-              top: 90,
-              child: _buildCircle(
-                size: 120,
-              ),
-            ),
-            Positioned(
-              left: size.width * 0.3,
-              top: 10,
-              child: _buildCircle(
-                size: 50,
-              ),
-            ),
-            Positioned(
-              left: size.width * 0.5,
-              bottom: -200,
-              child: _buildCircle(
-                size: 350,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Container _buildCircle({required double size, double? borderRadius}) {
-    borderRadius = borderRadius ?? size;
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius),
-        color: const Color.fromRGBO(255, 255, 255, 0.05),
       ),
     );
   }
@@ -170,7 +79,7 @@ class _Texts extends StatelessWidget {
                     AnimatedTextKit(
                       animatedTexts: <AnimatedText>[
                         TypewriterAnimatedText(
-                          'Full Stack Development',
+                          'Full Stack Developer',
                           textStyle: TextStyle(
                             color: Colors.white,
                             fontSize:
