@@ -14,14 +14,61 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// Primary color for the application: background, buttons backgrounds, etc.
+    const backgroundColorLight = Color.fromRGBO(247, 247, 248, 1);
+
+    /// Primary color for the application: background, buttons backgrunds, etc.
+    const backgroundColorDark = Color.fromRGBO(36, 37, 38, 1);
+
+    /// The base theme data.
+    final baseTheme = ThemeData(
+      fontFamily: 'IBMPlexSans',
+      accentColor: const Color(0xff0f2636),
+      accentColorBrightness: Brightness.dark,
+      appBarTheme: const AppBarTheme(
+        centerTitle: true,
+      ),
+    );
+
+    /// The implementation of [baseTheme] with adjustment for light theme.
+    final lightTheme = baseTheme.copyWith(
+      primaryColor: Colors.black,
+      scaffoldBackgroundColor: backgroundColorLight,
+      appBarTheme: const AppBarTheme(
+        actionsIconTheme: IconThemeData(
+          color: Colors.black,
+        ),
+        brightness: Brightness.light,
+        backgroundColor: backgroundColorLight,
+      ),
+      iconTheme: const IconThemeData(
+        color: Colors.black,
+      ),
+      cardColor: Colors.white,
+    );
+
+    /// The implementation of [baseTheme] with adjustment for dark theme.
+    final darkTheme = baseTheme.copyWith(
+      primaryColor: Colors.white,
+      scaffoldBackgroundColor: backgroundColorDark,
+      appBarTheme: const AppBarTheme(
+        actionsIconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        brightness: Brightness.dark,
+        backgroundColor: backgroundColorDark,
+      ),
+      iconTheme: const IconThemeData(
+        color: Colors.white,
+      ),
+      cardColor: const Color.fromRGBO(25, 26, 27, 1),
+    );
+
     return MaterialApp(
       title: 'SSMG Code',
-      theme: ThemeData(
-        fontFamily: 'IBMPlexSans',
-        primaryColor: const Color(0xff0f2636),
-        scaffoldBackgroundColor: const Color(0xfff0f2f5),
-      ),
       initialRoute: Flurorouter.rootRoute,
+      theme: lightTheme,
+      darkTheme: darkTheme,
       onGenerateRoute: Flurorouter.router.generator,
       builder: (BuildContext context, Widget? child) => MainLayout(
         child: child ?? Container(),
