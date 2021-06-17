@@ -17,11 +17,11 @@ class FavoriteTechnoloiesPresentation extends StatelessWidget {
           width: 170,
         ),
         DefaultTextStyle(
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 50,
             fontWeight: FontWeight.bold,
             fontFamily: 'Inter',
-            color: Colors.black,
+            color: Theme.of(context).primaryColor,
           ),
           child: AnimatedTextKit(
             repeatForever: true,
