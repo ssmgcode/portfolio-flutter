@@ -20,17 +20,19 @@ class MainLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const CustomAppBar(),
-          Expanded(
-            child: Navigator(
-              key: locator<NavigationService>().navigationKey,
-              initialRoute: Flurorouter.rootRoute,
-              onGenerateRoute: Flurorouter.router.generator,
+      body: SafeArea(
+        child: Column(
+          children: [
+            const CustomAppBar(),
+            Expanded(
+              child: Navigator(
+                key: locator<NavigationService>().navigationKey,
+                initialRoute: Flurorouter.rootRoute,
+                onGenerateRoute: Flurorouter.router.generator,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
