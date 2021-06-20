@@ -77,9 +77,6 @@ class MyApp extends StatelessWidget {
       title: 'SSMG Code',
       theme: lightTheme,
       // darkTheme: darkTheme,
-      /* initialRoute: Flurorouter.rootRoute,
-      onGenerateRoute: Flurorouter.router.generator,
-      navigatorKey: locator<NavigationService>().navigationKey, */
       home: const MainLayout(),
     );
   }
