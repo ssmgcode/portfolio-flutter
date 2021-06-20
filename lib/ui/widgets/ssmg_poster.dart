@@ -129,7 +129,7 @@ class _Texts extends StatelessWidget {
                   ],
                 ),
                 SvgPicture.asset(
-                  'images/ssmg-logo.svg',
+                  'assets/ssmg-logo.svg',
                   height: 150,
                 ),
               ],

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/locator.dart';
 import 'package:portfolio/router/router.dart';
+import 'package:portfolio/services/navigation_service.dart';
 import 'package:portfolio/ui/layouts/main_layout.dart';
 
 void main() {
+  setupLocator();
   Flurorouter.configureRoutes();
   runApp(const MyApp());
 }
@@ -14,10 +17,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Primary color for the application: background, buttons backgrounds, etc.
-    const backgroundColorLight = Color.fromRGBO(247, 247, 248, 1);
+    /// Primary light color for the application: background,
+    /// buttons backgrounds, etc.
+    const backgroundColorLight = Color.fromRGBO(248, 249, 250, 1);
 
-    /// Primary color for the application: background, buttons backgrunds, etc.
+    /// Primary dark color for the application: background,
+    /// buttons backgrunds, etc.
     const backgroundColorDark = Color.fromRGBO(36, 37, 38, 1);
 
     /// The base theme data.
@@ -33,7 +38,9 @@ class MyApp extends StatelessWidget {
     /// The implementation of [baseTheme] with adjustment for light theme.
     final lightTheme = baseTheme.copyWith(
       primaryColor: Colors.black,
+      backgroundColor: backgroundColorLight,
       scaffoldBackgroundColor: backgroundColorLight,
+      brightness: Brightness.light,
       appBarTheme: const AppBarTheme(
         actionsIconTheme: IconThemeData(
           color: Colors.black,
@@ -50,7 +57,9 @@ class MyApp extends StatelessWidget {
     /// The implementation of [baseTheme] with adjustment for dark theme.
     final darkTheme = baseTheme.copyWith(
       primaryColor: Colors.white,
+      backgroundColor: backgroundColorDark,
       scaffoldBackgroundColor: backgroundColorDark,
+      brightness: Brightness.dark,
       appBarTheme: const AppBarTheme(
         actionsIconTheme: IconThemeData(
           color: Colors.white,
@@ -66,13 +75,12 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'SSMG Code',
-      initialRoute: Flurorouter.rootRoute,
       theme: lightTheme,
-      darkTheme: darkTheme,
+      // darkTheme: darkTheme,
+      /* initialRoute: Flurorouter.rootRoute,
       onGenerateRoute: Flurorouter.router.generator,
-      builder: (BuildContext context, Widget? child) => MainLayout(
-        child: child ?? Container(),
-      ),
+      navigatorKey: locator<NavigationService>().navigationKey, */
+      home: const MainLayout(),
     );
   }
 }
