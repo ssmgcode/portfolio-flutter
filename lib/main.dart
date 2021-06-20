@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/router/router.dart';
-import 'package:portfolio/services/navigation_service.dart';
 import 'package:portfolio/ui/layouts/main_layout.dart';
 
 void main() {
