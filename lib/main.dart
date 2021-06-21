@@ -1,12 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
+import 'package:portfolio/config/app_colors.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/router/router.dart';
+import 'package:portfolio/shared_preferences/user_preferences.dart';
 import 'package:portfolio/ui/layouts/main_layout.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserPreferences().initPreferences();
   setupLocator();
   Flurorouter.configureRoutes();
-  runApp(const MyApp());
+  runApp(const ApplicationTheme());
+}
+
+/// Builds [MyApp] and depending on [ApplicationThemeModeCubit].
+class ApplicationTheme extends StatelessWidget {
+  /// Builds [MyApp] and depending on [ApplicationThemeModeCubit].
+  const ApplicationTheme({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ApplicationThemeModeCubit>(
+          create: (_) => ApplicationThemeModeCubit(),
+        ),
+      ],
+      child: const MyApp(),
+    );
+  }
 }
 
 /// Main application enter point for UI.
@@ -16,67 +40,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Primary light color for the application: background,
-    /// buttons backgrounds, etc.
-    const backgroundColorLight = Color.fromRGBO(248, 249, 250, 1);
-
-    /// Primary dark color for the application: background,
-    /// buttons backgrunds, etc.
-    const backgroundColorDark = Color.fromRGBO(36, 37, 38, 1);
-
-    /// The base theme data.
-    final baseTheme = ThemeData(
-      fontFamily: 'IBMPlexSans',
-      accentColor: const Color(0xff0f2636),
-      accentColorBrightness: Brightness.dark,
-      appBarTheme: const AppBarTheme(
-        centerTitle: true,
+    return BlocBuilder<ApplicationThemeModeCubit, ThemeMode>(
+      builder: (_, themeMode) => MaterialApp(
+        title: 'SSMG Code',
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: themeMode,
+        home: const MainLayout(),
       ),
-    );
-
-    /// The implementation of [baseTheme] with adjustment for light theme.
-    final lightTheme = baseTheme.copyWith(
-      primaryColor: Colors.black,
-      backgroundColor: backgroundColorLight,
-      scaffoldBackgroundColor: backgroundColorLight,
-      brightness: Brightness.light,
-      appBarTheme: const AppBarTheme(
-        actionsIconTheme: IconThemeData(
-          color: Colors.black,
-        ),
-        brightness: Brightness.light,
-        backgroundColor: backgroundColorLight,
-      ),
-      iconTheme: const IconThemeData(
-        color: Colors.black,
-      ),
-      cardColor: Colors.white,
-    );
-
-    /// The implementation of [baseTheme] with adjustment for dark theme.
-    final darkTheme = baseTheme.copyWith(
-      primaryColor: Colors.white,
-      backgroundColor: backgroundColorDark,
-      scaffoldBackgroundColor: backgroundColorDark,
-      brightness: Brightness.dark,
-      appBarTheme: const AppBarTheme(
-        actionsIconTheme: IconThemeData(
-          color: Colors.white,
-        ),
-        brightness: Brightness.dark,
-        backgroundColor: backgroundColorDark,
-      ),
-      iconTheme: const IconThemeData(
-        color: Colors.white,
-      ),
-      cardColor: const Color.fromRGBO(25, 26, 27, 1),
-    );
-
-    return MaterialApp(
-      title: 'SSMG Code',
-      theme: lightTheme,
-      // darkTheme: darkTheme,
-      home: const MainLayout(),
     );
   }
 }

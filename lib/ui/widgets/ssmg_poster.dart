@@ -35,9 +35,7 @@ class _Background extends StatelessWidget {
       child: Container(
         height: _posterHeight,
         width: size.width < 1000 ? size.width : 1000,
-        decoration: BoxDecoration(
-          color: Theme.of(context).accentColor,
-        ),
+        color: Theme.of(context).accentColor,
       ),
     );
   }

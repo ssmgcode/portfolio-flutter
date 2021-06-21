@@ -11,10 +11,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 70,
-      decoration: BoxDecoration(
-        // color: Colors.red,
-        color: Theme.of(context).backgroundColor,
-      ),
+      color: Theme.of(context).primaryColor,
       child: Padding(
         padding: const EdgeInsets.only(
           left: 15.0,
@@ -26,13 +23,20 @@ class CustomAppBar extends StatelessWidget {
             SvgPicture.asset(
               'assets/ssmg-logo.svg',
               height: 50,
-              color: Theme.of(context).primaryColor,
+              color: DefaultTextStyle.of(context).style.color,
             ),
             IconButton(
               icon: const Icon(Icons.more_horiz),
               onPressed: () {
                 showModalBottomSheet(
                   context: context,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(
+                        10.0,
+                      ),
+                    ),
+                  ),
                   builder: (BuildContext context) => const MenuBottomSheet(),
                 );
               },

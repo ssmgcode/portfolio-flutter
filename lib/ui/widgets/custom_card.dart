@@ -27,7 +27,6 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(10.0),
         boxShadow: const <BoxShadow>[
           BoxShadow(
@@ -39,10 +38,9 @@ class CustomCard extends StatelessWidget {
         ],
       ),
       child: DefaultTextStyle(
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: 'Inter',
           fontSize: 18,
-          color: Theme.of(context).primaryColor,
         ),
         child: Column(
           children: [

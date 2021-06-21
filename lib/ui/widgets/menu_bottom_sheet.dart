@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
 
 /// A custom bottom sheet for mobile application menu.
 class MenuBottomSheet extends StatelessWidget {
@@ -7,10 +9,25 @@ class MenuBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      color: Theme.of(context).cardColor,
-      child: const Text('Hi'),
+    final blocProvider = BlocProvider.of<ApplicationThemeModeCubit>(context);
+    return SizedBox(
+      height: 200.0,
+      child: Column(
+        children: <Widget>[
+          OutlinedButton(
+            onPressed: () => blocProvider.setThemeMode(ThemeMode.system),
+            child: const Text('System'),
+          ),
+          OutlinedButton(
+            onPressed: () => blocProvider.setThemeMode(ThemeMode.light),
+            child: const Text('Light'),
+          ),
+          OutlinedButton(
+            onPressed: () => blocProvider.setThemeMode(ThemeMode.dark),
+            child: const Text('Dark'),
+          ),
+        ],
+      ),
     );
   }
 }
