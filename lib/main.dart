@@ -12,13 +12,13 @@ void main() async {
   await UserPreferences().initPreferences();
   setupLocator();
   Flurorouter.configureRoutes();
-  runApp(const ApplicationTheme());
+  runApp(const ApplicationStateProvider());
 }
 
 /// Builds [MyApp] and depending on [ApplicationThemeModeCubit].
-class ApplicationTheme extends StatelessWidget {
+class ApplicationStateProvider extends StatelessWidget {
   /// Builds [MyApp] and depending on [ApplicationThemeModeCubit].
-  const ApplicationTheme({Key? key}) : super(key: key);
+  const ApplicationStateProvider({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ApplicationThemeModeCubit, ThemeMode>(
-      builder: (_, themeMode) => MaterialApp(
+      builder: (_, ThemeMode themeMode) => MaterialApp(
         title: 'SSMG Code',
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
