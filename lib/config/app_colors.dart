@@ -13,8 +13,7 @@ class AppTheme {
   static const brandColor = Color.fromRGBO(15, 38, 54, 1);
 
   /// The main font used across the application.
-  // static const _fontFamily = 'IBMPlexSans';
-  static const _fontFamily = 'Inter';
+  static const _fontFamily = 'IBMPlexSans';
 
   /// Light theme of application.
   static final lightTheme = ThemeData(
