@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/router/router.dart';
 import 'package:portfolio/services/navigation_service.dart';
@@ -19,6 +22,12 @@ class MainLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    if (brightness == Brightness.dark) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+    } else {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    }
     return Scaffold(
       body: SafeArea(
         child: Column(
