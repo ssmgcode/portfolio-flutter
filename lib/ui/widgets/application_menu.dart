@@ -10,7 +10,7 @@ class ApplicationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 600.0,
+      height: 180.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -31,13 +31,8 @@ class ApplicationMenu extends StatelessWidget {
           ),
           const _SetThemeExpansionPanel(),
           ListTile(
-            title: const Text('Contact me'),
-            leading: const Icon(Icons.call_outlined),
-            onTap: () {},
-          ),
-          ListTile(
-            title: const Text('Contact me'),
-            leading: const Icon(Icons.call_outlined),
+            title: const Text('Projects'),
+            leading: const Icon(Icons.task_alt_rounded),
             onTap: () {},
           ),
         ],
