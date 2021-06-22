@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/router/router.dart';
 import 'package:portfolio/services/navigation_service.dart';
-import 'package:portfolio/ui/widgets/custom_app_bar.dart';
+import 'package:portfolio/ui/widgets/menu_bottom_sheet.dart';
 
 /// Displays a [Scaffold], with a body with a custom bar navigation, a footer
 /// and a [Expanded] widget for a child.
@@ -22,26 +20,50 @@ class MainLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final brightness = Theme.of(context).brightness;
-    if (brightness == Brightness.dark) {
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    } else {
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-    }
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            const CustomAppBar(),
-            Expanded(
-              child: Navigator(
-                key: locator<NavigationService>().navigationKey,
-                initialRoute: Flurorouter.rootRoute,
-                onGenerateRoute: Flurorouter.router.generator,
-              ),
-            ),
-          ],
+      appBar: AppBar(
+        // Use a [Builder] to get the right context.
+        title: Builder(
+          builder: (BuildContext context) => SvgPicture.asset(
+            'assets/ssmg-logo.svg',
+            height: 30,
+            color: DefaultTextStyle.of(context).style.color,
+          ),
         ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(10.0),
+          ),
+        ),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(
+                      10.0,
+                    ),
+                  ),
+                ),
+                builder: (_) => const MenuBottomSheet(),
+              );
+            },
+            icon: const Icon(Icons.more_horiz),
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Navigator(
+              key: locator<NavigationService>().navigationKey,
+              initialRoute: Flurorouter.rootRoute,
+              onGenerateRoute: Flurorouter.router.generator,
+            ),
+          ),
+        ],
       ),
     );
   }
