@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/router/router.dart';
 import 'package:portfolio/services/navigation_service.dart';
-import 'package:portfolio/ui/widgets/menu_bottom_sheet.dart';
+import 'package:portfolio/ui/widgets/application_menu.dart';
 
 /// Displays a [Scaffold], with a body with a custom bar navigation, a footer
 /// and a [Expanded] widget for a child.
@@ -42,12 +42,10 @@ class MainLayout extends StatelessWidget {
                 context: context,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(
-                      10.0,
-                    ),
+                    top: Radius.circular(10.0),
                   ),
                 ),
-                builder: (_) => const MenuBottomSheet(),
+                builder: (_) => const ApplicationMenu(),
               );
             },
             icon: const Icon(Icons.more_horiz),
