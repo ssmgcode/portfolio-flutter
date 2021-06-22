@@ -38,7 +38,6 @@ class _AlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final blocProvider = BlocProvider.of<ApplicationThemeModeCubit>(context);
     return AlertDialog(
-      backgroundColor: Theme.of(context).cardColor,
       title: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: const <Widget>[

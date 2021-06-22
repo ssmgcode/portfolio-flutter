@@ -15,33 +15,48 @@ class AppTheme {
   /// The main font used across the application.
   static const _fontFamily = 'IBMPlexSans';
 
+  static const _darkPrimaryColor = Color.fromRGBO(36, 37, 38, 1);
+  static const _lightPrimaryColor = Colors.white;
+
   /// Light theme of application.
   static final lightTheme = ThemeData(
     fontFamily: _fontFamily,
     brightness: Brightness.light,
-    primaryColor: Colors.white,
+    primaryColor: _lightPrimaryColor,
     accentColor: _accentColor,
     toggleableActiveColor: _accentColor,
     scaffoldBackgroundColor: const Color.fromRGBO(248, 249, 250, 1),
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.white,
+      backgroundColor: _lightPrimaryColor,
       elevation: 3,
     ),
-    cardColor: Colors.white,
+    cardColor: _lightPrimaryColor,
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: _lightPrimaryColor,
+    ),
+    dialogTheme: const DialogTheme(
+      backgroundColor: _lightPrimaryColor,
+    ),
   );
 
   /// Dark theme of application.
   static final darkTheme = ThemeData(
     fontFamily: _fontFamily,
     brightness: Brightness.dark,
-    primaryColor: const Color.fromRGBO(36, 37, 38, 1),
+    primaryColor: _darkPrimaryColor,
     accentColor: _accentColor,
     toggleableActiveColor: _accentColor,
     scaffoldBackgroundColor: const Color.fromRGBO(25, 26, 27, 1),
     appBarTheme: const AppBarTheme(
-      backgroundColor: Color.fromRGBO(36, 37, 38, 1),
+      backgroundColor: _darkPrimaryColor,
       elevation: 3,
     ),
-    cardColor: const Color.fromRGBO(36, 37, 38, 1),
+    cardColor: _darkPrimaryColor,
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: _darkPrimaryColor,
+    ),
+    dialogTheme: const DialogTheme(
+      backgroundColor: _darkPrimaryColor,
+    ),
   );
 }
