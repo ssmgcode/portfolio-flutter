@@ -40,12 +40,12 @@ class MainLayout extends StatelessWidget {
             onPressed: () {
               showModalBottomSheet(
                 context: context,
+                builder: (_) => const ApplicationMenu(),
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(10.0),
                   ),
                 ),
-                builder: (_) => const ApplicationMenu(),
               );
             },
             icon: const Icon(Icons.more_horiz),

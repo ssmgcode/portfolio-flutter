@@ -10,32 +10,34 @@ class ApplicationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 180.0,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 20.0,
-              top: 15.0,
+      height: 400,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 20.0,
+                top: 15.0,
+              ),
+              child: Text(
+                'Application Menu',
+                style: Theme.of(context).textTheme.headline5!.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
             ),
-            child: Text(
-              'Application Menu',
-              style: Theme.of(context).textTheme.headline5!.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+            const SizedBox(
+              height: 10,
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const _SetThemeExpansionPanel(),
-          ListTile(
-            title: const Text('Projects'),
-            leading: const Icon(Icons.task_alt_rounded),
-            onTap: () {},
-          ),
-        ],
+            const _SetThemeExpansionPanel(),
+            ListTile(
+              title: const Text('Projects'),
+              leading: const Icon(Icons.task_alt_rounded),
+              onTap: () {},
+            ),
+          ],
+        ),
       ),
     );
   }
