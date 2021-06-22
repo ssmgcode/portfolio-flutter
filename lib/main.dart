@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
-import 'package:portfolio/config/app_colors.dart';
+import 'package:portfolio/config/app_theme.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/router/router.dart';
 import 'package:portfolio/shared_preferences/user_preferences.dart';
