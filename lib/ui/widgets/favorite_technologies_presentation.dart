@@ -16,7 +16,7 @@ class FavoriteTechnoloiesPresentation extends StatelessWidget {
           height: 170,
           width: 170,
         ),
-        DefaultTextStyle(
+        DefaultTextStyle.merge(
           style: const TextStyle(
             fontSize: 50,
             fontWeight: FontWeight.bold,

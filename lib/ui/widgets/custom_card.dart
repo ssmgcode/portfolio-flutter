@@ -28,6 +28,7 @@ class CustomCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
+        color: Theme.of(context).cardColor,
         boxShadow: const <BoxShadow>[
           BoxShadow(
             offset: Offset(0, 0),
@@ -37,7 +38,7 @@ class CustomCard extends StatelessWidget {
           ),
         ],
       ),
-      child: DefaultTextStyle(
+      child: DefaultTextStyle.merge(
         style: const TextStyle(
           fontFamily: 'Inter',
           fontSize: 18,

@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio/config/app_theme.dart';
 
 const double _mobileDisplayBreakpoint = 768;
 const double _posterHeight = 300;
@@ -35,7 +36,7 @@ class _Background extends StatelessWidget {
       child: Container(
         height: _posterHeight,
         width: size.width < 1000 ? size.width : 1000,
-        color: Theme.of(context).accentColor,
+        color: AppTheme.brandColor,
       ),
     );
   }
