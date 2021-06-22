@@ -19,11 +19,14 @@ class AppTheme {
   static final lightTheme = ThemeData(
     fontFamily: _fontFamily,
     brightness: Brightness.light,
-    primaryColorBrightness: Brightness.light,
     primaryColor: Colors.white,
     accentColor: _accentColor,
     toggleableActiveColor: _accentColor,
     scaffoldBackgroundColor: const Color.fromRGBO(248, 249, 250, 1),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.white,
+      elevation: 3,
+    ),
     cardColor: Colors.white,
   );
 
@@ -31,11 +34,14 @@ class AppTheme {
   static final darkTheme = ThemeData(
     fontFamily: _fontFamily,
     brightness: Brightness.dark,
-    primaryColorBrightness: Brightness.dark,
     primaryColor: const Color.fromRGBO(36, 37, 38, 1),
     accentColor: _accentColor,
     toggleableActiveColor: _accentColor,
     scaffoldBackgroundColor: const Color.fromRGBO(25, 26, 27, 1),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Color.fromRGBO(36, 37, 38, 1),
+      elevation: 3,
+    ),
     cardColor: const Color.fromRGBO(36, 37, 38, 1),
   );
 }
