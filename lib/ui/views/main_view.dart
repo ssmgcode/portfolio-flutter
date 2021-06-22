@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/ui/widgets/personal_information.dart';
 import 'package:portfolio/ui/widgets/ssmg_poster.dart';
 
-/// Displays the root page of the portfolio.
+/// Displays the root view of the portfolio.
 class MainView extends StatelessWidget {
-  /// Displays the root page of the portfolio.
+  /// Displays the root view of the portfolio.
   const MainView({Key? key}) : super(key: key);
 
   @override
