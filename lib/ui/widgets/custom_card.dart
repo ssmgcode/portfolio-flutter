@@ -45,7 +45,11 @@ class CustomCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            if (displayHeader) _CustomCardHeader(icon: icon, title: title),
+            if (displayHeader)
+              _CustomCardHeader(
+                icon: icon,
+                title: title,
+              ),
             _CustomCardBody(child: child),
           ],
         ),
