@@ -10,8 +10,12 @@ class ProjectsView extends StatelessWidget {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
-        children: const <Widget>[
-          Text('Projects view'),
+        children: <Widget>[
+          Container(
+            height: 200,
+            color: Colors.red,
+          ),
+          const Text('Projects view'),
         ],
       ),
     );
