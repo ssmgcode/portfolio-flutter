@@ -14,31 +14,35 @@ class PersonalInformation extends StatelessWidget {
         vertical: 20,
         horizontal: 10,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          const CustomCard(
-            icon: Icons.person_outline,
-            title: 'About me',
-            child: Text(
-              // ignore: lines_longer_than_80_chars
-              'I am SSMG, a guatemalan 17 years old guy, software engineer student, full stack developer and Flutter, Dart and Go lover.',
+      child: SizedBox(
+        width: 1000,
+        child: Column(
+          children: <Widget>[
+            const CustomCard(
+              icon: Icons.person_outline,
+              title: 'About me',
+              child: Text(
+                // ignore: lines_longer_than_80_chars
+                'I am SSMG, a guatemalan 17 years old guy, software engineer student, full stack developer and Flutter, Dart and Go lover.',
+              ),
             ),
-          ),
-          const FavoriteTechnoloiesPresentation(),
-          CustomCard(
-            icon: Icons.task_alt_rounded,
-            title: 'Projects',
-            child: Column(
-              children: <Widget>[
-                Container(
-                  color: Colors.teal,
-                  height: 50,
-                ),
-              ],
+            const FittedBox(
+              child: FavoriteTechnoloiesPresentation(),
             ),
-          ),
-        ],
+            CustomCard(
+              icon: Icons.task_alt_rounded,
+              title: 'Projects',
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    color: Colors.teal,
+                    height: 50,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

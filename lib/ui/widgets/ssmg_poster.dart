@@ -46,103 +46,107 @@ class _Texts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return SizedBox(
-      height: _posterHeight,
-      // color: Colors.green,
-      child: size.width < _mobileDisplayBreakpoint
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Text(
-                      'SSMG Code',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize:
-                            size.width < _mobileDisplayBreakpoint ? 50 : 64,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    /* Text(
-                      'Full Stack Development',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize:
-                            size.width < _mobileDisplayBreakpoint ? 20 : 28,
-                      ),
-                    ), */
-                    AnimatedTextKit(
-                      animatedTexts: <AnimatedText>[
-                        TypewriterAnimatedText(
-                          'Full Stack Developer',
-                          textStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize:
-                                size.width < _mobileDisplayBreakpoint ? 20 : 28,
-                          ),
-                          speed: const Duration(
-                            milliseconds: 100,
-                          ),
+    return Center(
+      child: SizedBox(
+        height: _posterHeight,
+        // color: Colors.green,
+        child: size.width < _mobileDisplayBreakpoint
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        'SSMG Code',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize:
+                              size.width < _mobileDisplayBreakpoint ? 50 : 64,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ],
-                      pause: const Duration(
-                        milliseconds: 2000,
                       ),
-                      repeatForever: true,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                SvgPicture.asset(
-                  'assets/ssmg-logo.svg',
-                  height: size.width < _mobileDisplayBreakpoint ? 100 : 150,
-                ),
-              ],
-            )
-          : Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text(
-                      'SSMG Code',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 64,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    AnimatedTextKit(
-                      animatedTexts: <AnimatedText>[
-                        TypewriterAnimatedText(
-                          'Full Stack Developer',
-                          textStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize:
-                                size.width < _mobileDisplayBreakpoint ? 20 : 28,
-                          ),
-                          speed: const Duration(
-                            milliseconds: 100,
-                          ),
+                      /* Text(
+                        'Full Stack Development',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize:
+                              size.width < _mobileDisplayBreakpoint ? 20 : 28,
                         ),
-                      ],
-                      pause: const Duration(
-                        milliseconds: 2000,
+                      ), */
+                      AnimatedTextKit(
+                        animatedTexts: <AnimatedText>[
+                          TypewriterAnimatedText(
+                            'Full Stack Developer',
+                            textStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: size.width < _mobileDisplayBreakpoint
+                                  ? 20
+                                  : 28,
+                            ),
+                            speed: const Duration(
+                              milliseconds: 100,
+                            ),
+                          ),
+                        ],
+                        pause: const Duration(
+                          milliseconds: 2000,
+                        ),
+                        repeatForever: true,
                       ),
-                      repeatForever: true,
-                    ),
-                  ],
-                ),
-                SvgPicture.asset(
-                  'assets/ssmg-logo.svg',
-                  height: 150,
-                ),
-              ],
-            ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SvgPicture.asset(
+                    'assets/ssmg-logo.svg',
+                    height: size.width < _mobileDisplayBreakpoint ? 100 : 150,
+                  ),
+                ],
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Text(
+                        'SSMG Code',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 64,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      AnimatedTextKit(
+                        animatedTexts: <AnimatedText>[
+                          TypewriterAnimatedText(
+                            'Full Stack Developer',
+                            textStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: size.width < _mobileDisplayBreakpoint
+                                  ? 20
+                                  : 28,
+                            ),
+                            speed: const Duration(
+                              milliseconds: 100,
+                            ),
+                          ),
+                        ],
+                        pause: const Duration(
+                          milliseconds: 2000,
+                        ),
+                        repeatForever: true,
+                      ),
+                    ],
+                  ),
+                  SvgPicture.asset(
+                    'assets/ssmg-logo.svg',
+                    height: 150,
+                  ),
+                ],
+              ),
+      ),
     );
   }
 }

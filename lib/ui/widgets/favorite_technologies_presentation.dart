@@ -10,43 +10,48 @@ class FavoriteTechnoloiesPresentation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Lottie.asset(
           'assets/heart_animation.json',
           height: 170,
           width: 170,
         ),
-        DefaultTextStyle.merge(
-          style: const TextStyle(
-            fontSize: 50,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Inter',
-          ),
-          child: AnimatedTextKit(
-            repeatForever: true,
-            pause: const Duration(
-              milliseconds: 0,
+        SizedBox(
+          width: 200,
+          child: DefaultTextStyle.merge(
+            style: const TextStyle(
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Inter',
             ),
-            animatedTexts: <AnimatedText>[
-              RotateAnimatedText(
-                'Flutter',
-                duration: const Duration(
-                  milliseconds: 1500,
-                ),
+            child: AnimatedTextKit(
+              repeatForever: true,
+              pause: const Duration(
+                milliseconds: 0,
               ),
-              RotateAnimatedText(
-                'Dart',
-                duration: const Duration(
-                  milliseconds: 1500,
+              animatedTexts: <AnimatedText>[
+                RotateAnimatedText(
+                  'Flutter',
+                  duration: const Duration(
+                    milliseconds: 1500,
+                  ),
                 ),
-              ),
-              RotateAnimatedText(
-                'Go',
-                duration: const Duration(
-                  milliseconds: 1500,
+                RotateAnimatedText(
+                  'Dart',
+                  duration: const Duration(
+                    milliseconds: 1500,
+                  ),
                 ),
-              ),
-            ],
+                RotateAnimatedText(
+                  'Go',
+                  duration: const Duration(
+                    milliseconds: 1500,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],
