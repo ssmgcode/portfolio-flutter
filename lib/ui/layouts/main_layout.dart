@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio/bloc/route/route_cubit.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/router/router.dart';
 import 'package:portfolio/services/navigation_service.dart';
@@ -20,48 +22,61 @@ class MainLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // Use a [Builder] to get the right context.
-        title: Builder(
-          builder: (BuildContext context) => SvgPicture.asset(
-            'assets/ssmg-logo.svg',
-            height: 30,
-            color: DefaultTextStyle.of(context).style.color,
-          ),
-        ),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(10.0),
-          ),
-        ),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                builder: (_) => const ApplicationMenu(),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(10.0),
-                  ),
-                ),
-              );
-            },
-            icon: const Icon(Icons.more_horiz),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Navigator(
-              key: locator<NavigationService>().navigationKey,
-              initialRoute: Flurorouter.rootRoute,
-              onGenerateRoute: Flurorouter.router.generator,
+    return WillPopScope(
+      onWillPop: () async {
+        final routeCubit = BlocProvider.of<RouteCubit>(context);
+        if (routeCubit.state != '/') {
+          await locator<NavigationService>().navigateTo('/');
+          return false;
+        }
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          // Use a [Builder] to get the right context.
+          title: Builder(
+            builder: (BuildContext context) => GestureDetector(
+              onTap: () => locator<NavigationService>().navigateTo('/'),
+              child: SvgPicture.asset(
+                'assets/ssmg-logo.svg',
+                height: 30,
+                color: DefaultTextStyle.of(context).style.color,
+              ),
             ),
           ),
-        ],
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(10.0),
+            ),
+          ),
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (_) => const ApplicationMenu(),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(10.0),
+                    ),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.more_horiz),
+            ),
+          ],
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: Navigator(
+                key: locator<NavigationService>().navigationKey,
+                initialRoute: Flurorouter.rootRoute,
+                onGenerateRoute: Flurorouter.router.generator,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
