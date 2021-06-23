@@ -31,11 +31,9 @@ class _Background extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Center(
       child: Container(
         height: _posterHeight,
-        width: size.width < 1000 ? size.width : 1000,
         color: AppTheme.brandColor,
       ),
     );
@@ -49,7 +47,6 @@ class _Texts extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      width: 700,
       height: _posterHeight,
       // color: Colors.green,
       child: size.width < _mobileDisplayBreakpoint
@@ -109,8 +106,9 @@ class _Texts extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Column(
-                  children: const <Widget>[
-                    Text(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text(
                       'SSMG Code',
                       style: TextStyle(
                         color: Colors.white,
@@ -118,12 +116,24 @@ class _Texts extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      'Full Stack Development',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 28,
+                    AnimatedTextKit(
+                      animatedTexts: <AnimatedText>[
+                        TypewriterAnimatedText(
+                          'Full Stack Developer',
+                          textStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize:
+                                size.width < _mobileDisplayBreakpoint ? 20 : 28,
+                          ),
+                          speed: const Duration(
+                            milliseconds: 100,
+                          ),
+                        ),
+                      ],
+                      pause: const Duration(
+                        milliseconds: 2000,
                       ),
+                      repeatForever: true,
                     ),
                   ],
                 ),
