@@ -13,21 +13,14 @@ class Flurorouter {
   /// Root route of the application.
   static const String rootRoute = '/';
 
-  /// Projects route of the application.
-  static const String projectsRoute = '/projects';
-
   /// Configures all routes and defines them with their respective handler.
   ///
   /// Must be called before UI application initialization.
   static void configureRoutes() {
-    router
-      ..define(
-        rootRoute,
-        handler: RouteHandlers.root,
-      )
-      ..define(
-        projectsRoute,
-        handler: RouteHandlers.projects,
-      );
+    router.define(
+      '/:page',
+      handler: RouteHandlers.general,
+      transitionType: TransitionType.material,
+    );
   }
 }

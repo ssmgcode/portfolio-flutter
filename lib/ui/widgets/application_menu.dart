@@ -36,7 +36,7 @@ class ApplicationMenu extends StatelessWidget {
             ListTile(
               title: const Text('Projects'),
               leading: const Icon(Icons.task_alt_rounded),
-              onTap: () => locator<NavigationService>().navigateTo('/projects'),
+              onTap: () => locator<NavigationService>().navigateTo('projects'),
             ),
           ],
         ),

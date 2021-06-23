@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
+import 'package:portfolio/bloc/route/route_cubit.dart';
 import 'package:portfolio/config/app_theme.dart';
 import 'package:portfolio/locator.dart';
 import 'package:portfolio/router/router.dart';
@@ -26,6 +27,9 @@ class ApplicationStateProvider extends StatelessWidget {
       providers: [
         BlocProvider<ApplicationThemeModeCubit>(
           create: (_) => ApplicationThemeModeCubit(),
+        ),
+        BlocProvider<RouteCubit>(
+          create: (_) => RouteCubit(),
         ),
       ],
       child: const MyApp(),
