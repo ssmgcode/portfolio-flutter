@@ -5,20 +5,22 @@ class CustomCard extends StatelessWidget {
   /// A custom card to display sections of my personal information.
   const CustomCard({
     Key? key,
-    required this.icon,
-    required this.title,
+    this.icon,
+    this.title,
     required this.child,
     this.displayHeader = true,
-  }) : super(key: key);
+  })  : assert(title != null || icon != null || displayHeader != true,
+            'Provide title and icon to show the Header'),
+        super(key: key);
 
   /// The child that is displayed as the body of the card.
   final Widget child;
 
   /// The icon for the header of the card.
-  final IconData icon;
+  final IconData? icon;
 
   /// The title for the header of the card.
-  final String title;
+  final String? title;
 
   /// If marked as false, [title] and [icon] will be ignored.
   final bool displayHeader;
@@ -47,8 +49,8 @@ class CustomCard extends StatelessWidget {
           children: [
             if (displayHeader)
               _CustomCardHeader(
-                icon: icon,
-                title: title,
+                icon: icon!,
+                title: title!,
               ),
             _CustomCardBody(child: child),
           ],
