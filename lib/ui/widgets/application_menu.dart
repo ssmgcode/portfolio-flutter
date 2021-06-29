@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
 import 'package:portfolio/router/page_manager.dart';
-import 'package:portfolio/services/navigation_service.dart';
 
 /// A custom bottom sheet for mobile application menu.
 class ApplicationMenu extends StatelessWidget {
@@ -11,35 +10,32 @@ class ApplicationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 400,
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 20.0,
-                top: 15.0,
-              ),
-              child: Text(
-                'Application Menu',
-                style: Theme.of(context).textTheme.headline5!.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 20.0,
+              top: 15.0,
             ),
-            const SizedBox(
-              height: 10,
+            child: Text(
+              'Application Menu',
+              style: Theme.of(context).textTheme.headline5!.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
-            const _SetThemeExpansionPanel(),
-            ListTile(
-              title: const Text('Projects'),
-              leading: const Icon(Icons.task_alt_rounded),
-              onTap: () => RouterPageManager.of(context).openProjectsPage(),
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const _SetThemeExpansionPanel(),
+          ListTile(
+            title: const Text('Projects'),
+            leading: const Icon(Icons.task_alt_rounded),
+            onTap: () => RouterPageManager.of(context).openProjectsPage(),
+          ),
+        ],
       ),
     );
   }
