@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
-import 'package:portfolio/bloc/route/route_cubit.dart';
 import 'package:portfolio/config/app_theme.dart';
-import 'package:portfolio/locator.dart';
-import 'package:portfolio/router/router.dart';
+import 'package:portfolio/router/my_app_route_information_parser.dart';
+import 'package:portfolio/router/my_app_router_delegate.dart';
 import 'package:portfolio/shared_preferences/user_preferences.dart';
-import 'package:portfolio/ui/layouts/main_layout.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await UserPreferences().initPreferences();
-  setupLocator();
-  Flurorouter.configureRoutes();
-  runApp(const ApplicationStateProvider());
+  runApp(const MyAppStateProvider());
 }
 
 /// Builds [MyApp] and depending on [ApplicationThemeModeCubit].
-class ApplicationStateProvider extends StatelessWidget {
+class MyAppStateProvider extends StatelessWidget {
   /// Builds [MyApp] and depending on [ApplicationThemeModeCubit].
-  const ApplicationStateProvider({Key? key}) : super(key: key);
+  const MyAppStateProvider({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +23,6 @@ class ApplicationStateProvider extends StatelessWidget {
       providers: [
         BlocProvider<ApplicationThemeModeCubit>(
           create: (_) => ApplicationThemeModeCubit(),
-        ),
-        BlocProvider<RouteCubit>(
-          create: (_) => RouteCubit(),
         ),
       ],
       child: const MyApp(),
@@ -45,12 +38,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ApplicationThemeModeCubit, ThemeMode>(
-      builder: (_, ThemeMode themeMode) => MaterialApp(
+      builder: (_, ThemeMode themeMode) => MaterialApp.router(
         title: 'SSMG Code',
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
         themeMode: themeMode,
-        home: const MainLayout(),
+        routeInformationParser: MyAppRouteInformationParser(),
+        routerDelegate: MyAppRouterDelegate(),
       ),
     );
   }

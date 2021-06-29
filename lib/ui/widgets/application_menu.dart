@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
-import 'package:portfolio/locator.dart';
+import 'package:portfolio/router/page_manager.dart';
 import 'package:portfolio/services/navigation_service.dart';
 
 /// A custom bottom sheet for mobile application menu.
@@ -36,7 +36,7 @@ class ApplicationMenu extends StatelessWidget {
             ListTile(
               title: const Text('Projects'),
               leading: const Icon(Icons.task_alt_rounded),
-              onTap: () => locator<NavigationService>().navigateTo('projects'),
+              onTap: () => RouterPageManager.of(context).openProjectsPage(),
             ),
           ],
         ),
