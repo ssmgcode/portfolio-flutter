@@ -1,10 +1,12 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:portfolio/config/personal_information.dart';
 import 'package:portfolio/ui/widgets/app_bar.dart';
 import 'package:portfolio/ui/widgets/custom_card.dart';
 import 'package:portfolio/ui/widgets/favorite_technologies_presentation.dart';
 import 'package:portfolio/ui/widgets/percent_bar/percent_bar.dart';
 import 'package:portfolio/ui/widgets/ssmg_poster.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// Displays the root view of the portfolio.
 class HomePage extends StatelessWidget {
@@ -45,6 +47,10 @@ class HomePage extends StatelessWidget {
                       height: 25,
                     ),
                     _SkillsSection(),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    _ProjectsSection(),
                   ],
                 ),
               ),
@@ -115,6 +121,29 @@ class _SkillsSection extends StatelessWidget {
             percent: 0.30,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ProjectsSection extends StatelessWidget {
+  const _ProjectsSection({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomCard(
+      title: 'Projects',
+      icon: Icons.task_alt_outlined,
+      actionIcon: Icons.link_outlined,
+      actionName: 'Visit',
+      onActionPressed: () async {
+        if (await canLaunch(PersonalInformation.githubProfileUrl)) {
+          await launch(PersonalInformation.githubProfileUrl);
+        }
+      },
+      child: Container(
+        color: Colors.teal,
+        height: 10,
       ),
     );
   }
