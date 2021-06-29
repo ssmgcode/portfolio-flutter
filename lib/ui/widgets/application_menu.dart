@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
+import 'package:portfolio/config/personal_information.dart';
 import 'package:portfolio/router/page_manager.dart';
 
 /// A custom bottom sheet for mobile application menu.
@@ -37,6 +39,31 @@ class ApplicationMenu extends StatelessWidget {
               Navigator.pop(context);
               RouterPageManager.of(context).openProjectsPage();
             },
+          ),
+          ListTile(
+            title: const Text('More info'),
+            leading: const Icon(Icons.info_outline_rounded),
+            onTap: () => showAboutDialog(
+              context: context,
+              applicationVersion: '0.5.0',
+              applicationName: 'SSMG Code portfolio',
+              applicationIcon: Image.asset(
+                'assets/ssmg-logo.png',
+                width: 64,
+              ),
+              children: <Widget>[
+                ListTile(
+                  title: const Text('View on Github'),
+                  leading: const Icon(Icons.link_outlined),
+                  onTap: () async {
+                    if (await canLaunch(
+                        PersonalInformation.projectRepositoryUrl)) {
+                      await launch(PersonalInformation.projectRepositoryUrl);
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),
