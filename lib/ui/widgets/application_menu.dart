@@ -33,7 +33,10 @@ class ApplicationMenu extends StatelessWidget {
           ListTile(
             title: const Text('Projects'),
             leading: const Icon(Icons.task_alt_rounded),
-            onTap: () => RouterPageManager.of(context).openProjectsPage(),
+            onTap: () {
+              Navigator.pop(context);
+              RouterPageManager.of(context).openProjectsPage();
+            },
           ),
         ],
       ),
