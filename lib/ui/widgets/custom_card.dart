@@ -5,12 +5,22 @@ class CustomCard extends StatelessWidget {
   /// A custom card to display sections of my personal information.
   const CustomCard({
     Key? key,
-    this.icon,
-    this.title,
     required this.child,
+    this.actionIcon,
+    this.actionName,
     this.displayHeader = true,
-  })  : assert(title != null || icon != null || displayHeader != true,
-            'Provide title and icon to show the Header'),
+    this.icon,
+    this.onActionPressed,
+    this.title,
+  })  : assert(
+          title != null ||
+              icon != null ||
+              actionName != null ||
+              actionIcon != null ||
+              onActionPressed != null ||
+              displayHeader != true,
+          'Provide title and icon to show the Header',
+        ),
         super(key: key);
 
   /// The child that is displayed as the body of the card.
@@ -21,6 +31,15 @@ class CustomCard extends StatelessWidget {
 
   /// The title for the header of the card.
   final String? title;
+
+  /// The name for the action in the header.
+  final String? actionName;
+
+  /// THe icon for the action in the header.
+  final IconData? actionIcon;
+
+  /// The function when the action in the header is pressed.
+  final void Function()? onActionPressed;
 
   /// If marked as false, [title] and [icon] will be ignored.
   final bool displayHeader;
@@ -49,8 +68,11 @@ class CustomCard extends StatelessWidget {
           children: [
             if (displayHeader)
               _CustomCardHeader(
-                icon: icon!,
-                title: title!,
+                icon: icon,
+                title: title,
+                actionIcon: actionIcon,
+                actionName: actionName,
+                onActionPressed: onActionPressed,
               ),
             _CustomCardBody(child: child),
           ],
@@ -63,33 +85,63 @@ class CustomCard extends StatelessWidget {
 class _CustomCardHeader extends StatelessWidget {
   const _CustomCardHeader({
     Key? key,
-    required this.icon,
-    required this.title,
+    this.actionIcon,
+    this.actionName,
+    this.icon,
+    this.onActionPressed,
+    this.title,
   }) : super(key: key);
 
-  final IconData icon;
-  final String title;
+  final IconData? icon;
+  final String? title;
+  final String? actionName;
+  final IconData? actionIcon;
+  final void Function()? onActionPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(
-        top: 20,
+        top: 7,
         left: 15,
+        right: 15,
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Icon(
-            icon,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              if (icon != null)
+                Icon(
+                  icon,
+                ),
+              const SizedBox(
+                width: 10,
+              ),
+              if (title != null)
+                Text(
+                  title!,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+            ],
           ),
-          const SizedBox(
-            width: 10,
-          ),
-          Text(
-            title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
+          TextButton(
+            onPressed: onActionPressed,
+            style: TextButton.styleFrom(
+              primary: Theme.of(context).accentColor,
+            ),
+            child: Row(
+              // crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                if (actionName != null) Text(actionName!),
+                const SizedBox(
+                  width: 10,
+                ),
+                if (actionIcon != null) Icon(actionIcon!),
+              ],
             ),
           ),
         ],
