@@ -6,12 +6,15 @@ import 'package:provider/provider.dart';
 
 /// The page manager for the router.
 class RouterPageManager extends ChangeNotifier {
+  // |- Implementation of singleton pattern to avoid re instance this class and
+  // reset pages list
   RouterPageManager._internal();
 
   /// The page manager for the router.
   factory RouterPageManager() => _singleton;
 
   static final RouterPageManager _singleton = RouterPageManager._internal();
+  // ->
 
   final List<Page> _pages = [
     MaterialPage(
