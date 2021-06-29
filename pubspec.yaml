@@ -25,12 +25,10 @@ dependencies:
     sdk: flutter
   animated_text_kit: ^4.2.1
   cupertino_icons: ^1.0.2
-  custom_pop_up_menu: ^1.2.0
-  fluro: ^2.0.3
   flutter_bloc: ^7.0.1
   flutter_svg: ^0.22.0
-  get_it: ^7.1.4
   lottie: ^1.0.1
+  provider: ^5.0.0
   shared_preferences: ^2.0.6
 
 dev_dependencies:
