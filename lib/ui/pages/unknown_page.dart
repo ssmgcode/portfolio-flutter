@@ -25,7 +25,7 @@ class UnknownPage extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Text(
+          const Text(
             "It seems you've requested a page that doesn't exist.",
           ),
           const SizedBox(
