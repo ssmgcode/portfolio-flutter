@@ -7,4 +7,7 @@ class PersonalInformation {
 
   /// My Github profile url.
   static const githubProfileUrl = 'https://github.com/ssmgcode';
+
+  /// This project repository.
+  static const projectRepositoryUrl = '$githubProfileUrl/portfolio';
 }
