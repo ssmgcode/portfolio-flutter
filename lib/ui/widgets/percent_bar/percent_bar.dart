@@ -30,7 +30,7 @@ class PercentBar extends StatelessWidget {
           width: constraints.maxWidth,
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-            color: Colors.grey.shade300,
+            color: DefaultTextStyle.of(context).style.color!.withOpacity(0.1),
             borderRadius: borderRadius,
           ),
           child: Container(

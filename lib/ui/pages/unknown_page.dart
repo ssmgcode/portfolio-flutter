@@ -12,34 +12,36 @@ class UnknownPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Lottie.asset(
-            'assets/lost-animation.json',
-          ),
-          Text(
-            'Page not found',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            "It seems you've requested a page that doesn't exist.",
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          TextButton.icon(
-            onPressed: () => RouterPageManager.of(context).openHomePage(),
-            icon: const Icon(Icons.home_outlined),
-            label: const Text('Go to Home'),
-            style: TextButton.styleFrom(
-              primary: Theme.of(context).accentColor,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Lottie.asset(
+              'assets/lost-animation.json',
             ),
-          )
-        ],
+            Text(
+              'Page not found',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              "It seems you've requested a page that doesn't exist.",
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextButton.icon(
+              onPressed: () => RouterPageManager.of(context).openHomePage(),
+              icon: const Icon(Icons.home_outlined),
+              label: const Text('Go to Home'),
+              style: TextButton.styleFrom(
+                primary: Theme.of(context).accentColor,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

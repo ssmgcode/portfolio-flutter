@@ -61,7 +61,6 @@ class CustomCard extends StatelessWidget {
       ),
       child: DefaultTextStyle.merge(
         style: const TextStyle(
-          fontFamily: 'Inter',
           fontSize: 18,
         ),
         child: Column(
@@ -102,7 +101,7 @@ class _CustomCardHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(
-        top: 7,
+        top: 15,
         left: 15,
         right: 15,
       ),
