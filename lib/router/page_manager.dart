@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/router/my_app_path_configuration.dart';
 import 'package:portfolio/ui/pages/home_page.dart';
 import 'package:portfolio/ui/pages/projects_page.dart';
+import 'package:portfolio/ui/pages/unknown_page.dart';
 import 'package:provider/provider.dart';
 
 /// The page manager for the router.
@@ -44,6 +45,12 @@ class RouterPageManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Deletes all pages except home page.
+  void openHomePage() {
+    _pages.removeWhere((page) => page.name != '/');
+    notifyListeners();
+  }
+
   /// Add projects page to pages list.
   void openProjectsPage() {
     _pages.add(
@@ -56,16 +63,22 @@ class RouterPageManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Deletes all pages except home page.
-  void openHomePage() {
-    _pages.removeWhere((page) => page.name != '/');
+  /// Add unknown page to pages list.
+  void openUnknownPage() {
+    _pages.add(
+      MaterialPage(
+        key: UniqueKey(),
+        name: '/404',
+        child: const UnknownPage(),
+      ),
+    );
     notifyListeners();
   }
 
   /// Updates internal state of pages when external url changes.
   Future<void> setNewRoutePath(MyAppPathConfiguration configuration) async {
     if (configuration.isUnknown) {
-      // TODO: Implement redirection to 404 page.
+      openUnknownPage();
     } else if (configuration.isProjects) {
       openProjectsPage();
     } else if (configuration.isHome) {
