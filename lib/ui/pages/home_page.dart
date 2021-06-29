@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:portfolio/ui/widgets/app_bar.dart';
 import 'package:portfolio/ui/widgets/custom_card.dart';
