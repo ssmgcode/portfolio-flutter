@@ -59,6 +59,7 @@ class RouterPageManager extends ChangeNotifier {
   /// Deletes all pages except home page.
   void openHomePage() {
     _pages.removeWhere((page) => page.name != '/');
+    notifyListeners();
   }
 
   /// Updates internal state of pages when external url changes.
