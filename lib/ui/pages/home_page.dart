@@ -28,8 +28,8 @@ class HomePage extends StatelessWidget {
               child: SizedBox(
                 width: 1000,
                 child: Column(
-                  children: <Widget>[
-                    const CustomCard(
+                  children: const <Widget>[
+                    CustomCard(
                       icon: Icons.person_outline,
                       title: 'About me',
                       child: SelectableText(
@@ -37,66 +37,84 @@ class HomePage extends StatelessWidget {
                         'I am SSMG, a guatemalan 17 years old guy, software engineer student, full stack developer and Flutter, Dart and Go lover.',
                       ),
                     ),
-                    const FittedBox(
+                    FittedBox(
                       child: FavoriteTechnoloiesPresentation(),
                     ),
-                    CustomCard(
-                      icon: Icons.language_outlined,
-                      title: 'Languages',
-                      child: Column(
-                        children: const <Widget>[
-                          _Skill(
-                            name: 'Spanish - Native',
-                            percent: 1.0,
-                          ),
-                          _Skill(
-                            name: 'English',
-                            percent: 0.75,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
+                    _LanguagesSection(),
+                    SizedBox(
                       height: 25,
                     ),
-                    CustomCard(
-                      icon: Icons.hardware_outlined,
-                      title: 'Skills',
-                      child: Column(
-                        children: const <Widget>[
-                          _Skill(
-                            name: 'Dart',
-                            percent: 0.6,
-                          ),
-                          _Skill(
-                            name: 'Flutter',
-                            percent: 0.35,
-                          ),
-                          _Skill(
-                            name: 'Go',
-                            percent: 0.05,
-                          ),
-                          _Skill(
-                            name: 'TypeScript',
-                            percent: 0.75,
-                          ),
-                          _Skill(
-                            name: 'Svelte',
-                            percent: 0.5,
-                          ),
-                          _Skill(
-                            name: 'Git',
-                            percent: 0.30,
-                          ),
-                        ],
-                      ),
-                    ),
+                    _SkillsSection(),
                   ],
                 ),
               ),
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _LanguagesSection extends StatelessWidget {
+  const _LanguagesSection({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomCard(
+      icon: Icons.language_outlined,
+      title: 'Languages',
+      child: Column(
+        children: const <Widget>[
+          _Skill(
+            name: 'Spanish - Native',
+            percent: 1.0,
+          ),
+          _Skill(
+            name: 'English',
+            percent: 0.75,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SkillsSection extends StatelessWidget {
+  const _SkillsSection({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomCard(
+      icon: Icons.hardware_outlined,
+      title: 'Skills',
+      child: Column(
+        children: const <Widget>[
+          _Skill(
+            name: 'Dart',
+            percent: 0.6,
+          ),
+          _Skill(
+            name: 'Flutter',
+            percent: 0.35,
+          ),
+          _Skill(
+            name: 'Go',
+            percent: 0.05,
+          ),
+          _Skill(
+            name: 'TypeScript',
+            percent: 0.75,
+          ),
+          _Skill(
+            name: 'Svelte',
+            percent: 0.5,
+          ),
+          _Skill(
+            name: 'Git',
+            percent: 0.30,
+          ),
+        ],
       ),
     );
   }
