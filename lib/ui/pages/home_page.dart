@@ -79,6 +79,7 @@ class _LanguagesSection extends StatelessWidget {
           _Skill(
             name: 'English',
             percent: 0.75,
+            color: Colors.purple,
           ),
         ],
       ),
@@ -99,26 +100,32 @@ class _SkillsSection extends StatelessWidget {
           _Skill(
             name: 'Dart',
             percent: 0.6,
+            color: Color.fromRGBO(1, 87, 155, 1),
           ),
           _Skill(
             name: 'Flutter',
             percent: 0.35,
+            color: Color.fromRGBO(69, 209, 253, 1),
           ),
           _Skill(
             name: 'Go',
             percent: 0.05,
+            color: Color.fromRGBO(0, 172, 215, 1),
           ),
           _Skill(
             name: 'TypeScript',
             percent: 0.75,
+            color: Color.fromRGBO(43, 116, 137, 1),
           ),
           _Skill(
             name: 'Svelte',
             percent: 0.5,
+            color: Color.fromRGBO(255, 62, 0, 1),
           ),
           _Skill(
             name: 'Git',
             percent: 0.30,
+            color: Color.fromRGBO(244, 77, 39, 1),
           ),
         ],
       ),
@@ -154,16 +161,15 @@ class _Skill extends StatelessWidget {
     Key? key,
     required this.name,
     required this.percent,
+    this.color,
   }) : super(key: key);
 
   final String name;
   final double percent;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
-    final random = Random();
-    final randomColor = Color.fromRGBO(
-        random.nextInt(255), random.nextInt(255), random.nextInt(255), 1);
     return Column(
       children: <Widget>[
         Container(
@@ -182,7 +188,7 @@ class _Skill extends StatelessWidget {
         ),
         PercentBar(
           percent: percent,
-          color: randomColor,
+          color: color,
         ),
         const SizedBox(
           height: 5,
