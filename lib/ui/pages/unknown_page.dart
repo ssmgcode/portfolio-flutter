@@ -14,10 +14,13 @@ class UnknownPage extends StatelessWidget {
       appBar: buildAppBar(context),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Lottie.asset(
-              'assets/lost-animation.json',
+            // const Spacer(),
+            Expanded(
+              flex: 2,
+              child: Lottie.asset(
+                'assets/lost-animation.json',
+              ),
             ),
             Text(
               'Page not found',
@@ -39,7 +42,8 @@ class UnknownPage extends StatelessWidget {
               style: TextButton.styleFrom(
                 primary: Theme.of(context).accentColor,
               ),
-            )
+            ),
+            const Spacer(),
           ],
         ),
       ),
