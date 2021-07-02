@@ -36,7 +36,7 @@ class PercentBar extends StatelessWidget {
           child: Container(
             width: constraints.maxWidth * percent,
             decoration: BoxDecoration(
-              color: color ?? Colors.green,
+              color: color ?? Theme.of(context).accentColor,
               borderRadius: borderRadius,
             ),
           ),
