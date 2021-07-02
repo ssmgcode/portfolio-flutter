@@ -1,5 +1,6 @@
 flutter_icons:
-  android: true
+  # This is due to making the launcher icon in Android Studio is easier
+  android: false
   ios: true
   image_path: "assets/ssmg-logo.png"
   adaptive_icon_background: "#0f2636"
