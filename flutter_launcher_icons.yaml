@@ -4,3 +4,4 @@ flutter_icons:
   image_path: "assets/ssmg-logo.png"
   adaptive_icon_background: "#0f2636"
   adaptive_icon_foreground: "assets/ssmg-logo-without-bg.png"
+  remove_alpha_ios: true
