@@ -9,7 +9,7 @@ const RESOURCES = {
 "assets/AssetManifest.json": "3987e008b64f9df80f9c972d26e04c7a",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/FontManifest.json": "e68f32846b338eab53b27ee6c2b63763",
-"assets/NOTICES": "855e71d12c6dca57160cf24aedb9d20a",
+"assets/NOTICES": "3d822e84a0ebca234d7fe84ad553930e",
 "assets/assets/ssmg-logo.svg": "d397622b80c6a39e77fbe47cacb669a1",
 "assets/assets/lost-animation.json": "9dc08d669886a5640fef53a02ba220ab",
 "assets/assets/heart_animation.json": "f370fa7284ed0663055b258059c0c0ae",
@@ -25,9 +25,16 @@ const RESOURCES = {
 "assets/fonts/IBMPlexSans-Medium.ttf": "78186d5cb07b0f49ccf7e0ef0ce013ea",
 "main.dart.js": "dd093906c06efae466f9273b7ccb8c31",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"splash/img/light-2x.png": "4c222a01a0666a8321edfa465e8b4f9c",
+"splash/img/light-3x.png": "93a0ea0b62adf5ba15e600d8a72689bb",
+"splash/img/light-1x.png": "4d7152593e7df52d64e96b56fb3cdeec",
+"splash/img/dark-2x.png": "4c222a01a0666a8321edfa465e8b4f9c",
+"splash/img/dark-1x.png": "4d7152593e7df52d64e96b56fb3cdeec",
+"splash/img/dark-3x.png": "93a0ea0b62adf5ba15e600d8a72689bb",
+"splash/style.css": "aae6c50a132912bc51d86557dad7e886",
 "version.json": "79b634da95410e80686641c9e89e3513",
-"index.html": "b976c03b211b6e0003a28ecef7920f9c",
-"/": "b976c03b211b6e0003a28ecef7920f9c"
+"index.html": "6e34c5ee4572dd3de7491f7ba01d8b02",
+"/": "6e34c5ee4572dd3de7491f7ba01d8b02"
 };
 
 // The application shell files that are downloaded before a service worker can
