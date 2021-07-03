@@ -4,6 +4,7 @@ import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
 import 'package:portfolio/config/app_theme.dart';
 import 'package:portfolio/router/my_app_route_information_parser.dart';
 import 'package:portfolio/router/my_app_router_delegate.dart';
+import 'package:portfolio/services/snackbar_service.dart';
 import 'package:portfolio/shared_preferences/user_preferences.dart';
 
 void main() async {
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         themeMode: themeMode,
         routeInformationParser: MyAppRouteInformationParser(),
         routerDelegate: MyAppRouterDelegate(),
+        scaffoldMessengerKey: SnackBarService.messengerKey,
       ),
     );
   }
