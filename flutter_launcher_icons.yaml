@@ -1,0 +1,8 @@
+flutter_icons:
+  # This is due to making the launcher icon in Android Studio is easier
+  android: false
+  ios: true
+  image_path: "assets/ssmg-logo.png"
+  adaptive_icon_background: "#0f2636"
+  adaptive_icon_foreground: "assets/ssmg-logo-without-bg.png"
+  remove_alpha_ios: true
