@@ -8,7 +8,7 @@ class PercentBar extends StatelessWidget {
   const PercentBar({
     Key? key,
     required this.percent,
-    this.color = Colors.green,
+    this.color,
   })  : assert(percent >= 0.0 && percent <= 1.0),
         super(key: key);
 
@@ -18,7 +18,7 @@ class PercentBar extends StatelessWidget {
 
   /// The color used for the colored percent bar.
   /// Defaults to [Colors.green].
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class PercentBar extends StatelessWidget {
           child: Container(
             width: constraints.maxWidth * percent,
             decoration: BoxDecoration(
-              color: color,
+              color: color ?? Theme.of(context).accentColor,
               borderRadius: borderRadius,
             ),
           ),
