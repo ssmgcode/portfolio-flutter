@@ -6,13 +6,14 @@ const RESOURCES = {
   "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "manifest.json": "a83bbbd9d23ea4d752fbcd44cdc544fa",
-"assets/AssetManifest.json": "b8511c8f2871055a2bc869c6c095236b",
+"assets/AssetManifest.json": "3987e008b64f9df80f9c972d26e04c7a",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/FontManifest.json": "e68f32846b338eab53b27ee6c2b63763",
-"assets/NOTICES": "066e8c39bc1b6260ae6fd5a7ee088cd7",
+"assets/NOTICES": "855e71d12c6dca57160cf24aedb9d20a",
 "assets/assets/ssmg-logo.svg": "d397622b80c6a39e77fbe47cacb669a1",
 "assets/assets/lost-animation.json": "9dc08d669886a5640fef53a02ba220ab",
 "assets/assets/heart_animation.json": "f370fa7284ed0663055b258059c0c0ae",
+"assets/assets/ssmg-logo-without-bg.png": "bc2d508ed3cf894ffcffa11d3493bdca",
 "assets/assets/ssmg-logo.png": "1e472f37d3fc8ea14c6cf564757ff308",
 "assets/fonts/IBMPlexSans-Text.ttf": "d15aafdb0a9a1e1f956461455f0e467a",
 "assets/fonts/Inter.ttf": "9d6daa60661fbedb6d04fa218c7a6158",
@@ -22,11 +23,11 @@ const RESOURCES = {
 "assets/fonts/IBMPlexSans-Regular.ttf": "5885b648efeb838142e33016f67b4a35",
 "assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
 "assets/fonts/IBMPlexSans-Medium.ttf": "78186d5cb07b0f49ccf7e0ef0ce013ea",
-"main.dart.js": "f5a3398cca17c16ff7974c2e6f11b7b8",
+"main.dart.js": "dd093906c06efae466f9273b7ccb8c31",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "version.json": "79b634da95410e80686641c9e89e3513",
-"index.html": "1238612789c0d695800eff930d9755a4",
-"/": "1238612789c0d695800eff930d9755a4"
+"index.html": "b976c03b211b6e0003a28ecef7920f9c",
+"/": "b976c03b211b6e0003a28ecef7920f9c"
 };
 
 // The application shell files that are downloaded before a service worker can
