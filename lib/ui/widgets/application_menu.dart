@@ -17,19 +17,27 @@ class ApplicationMenu extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(
-              left: 20.0,
-              top: 15.0,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 19.0,
+              vertical: 15,
             ),
-            child: Text(
-              'Application Menu',
-              style: Theme.of(context).textTheme.headline5!.copyWith(
-                    fontWeight: FontWeight.bold,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Application Menu',
+                  style: Theme.of(context).textTheme.headline5!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(
+                    left: 15.0,
                   ),
+                  child: CloseButton(),
+                ),
+              ],
             ),
-          ),
-          const SizedBox(
-            height: 10,
           ),
           const _SetThemeExpansionPanel(),
           ListTile(
