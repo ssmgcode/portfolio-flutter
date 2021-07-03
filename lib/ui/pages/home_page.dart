@@ -75,7 +75,7 @@ class _LanguagesSection extends StatelessWidget {
           _Skill(
             name: 'Spanish - Native',
             percent: 1.0,
-            color: Colors.green,
+            color: Colors.deepPurple,
           ),
           _Skill(
             name: 'English',
