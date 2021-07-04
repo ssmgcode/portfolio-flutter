@@ -13,30 +13,31 @@ class SnackBarService {
   /// Builds a custom snackbar for base.
   static SnackBar _buildBaseSnackBar({
     Color? backgroundColor,
+    Color? color,
     IconData? icon,
     SnackBarAction? action,
-    required Color color,
     required String message,
   }) =>
       SnackBar(
         backgroundColor: backgroundColor,
-        behavior: SnackBarBehavior.floating,
         action: action,
         content: Row(
           children: <Widget>[
             if (icon != null)
               Icon(
                 icon,
-                color: color,
+                color: color ?? Colors.white,
               ),
             if (icon != null)
               const SizedBox(
                 width: 10,
               ),
-            Text(
-              message,
-              style: TextStyle(
-                color: color,
+            Expanded(
+              child: Text(
+                message,
+                style: TextStyle(
+                  color: color,
+                ),
               ),
             ),
           ],
@@ -46,12 +47,13 @@ class SnackBarService {
   /// Shows an snackbar with information motive.
   static void showInformationSnackBar({
     SnackBarAction? action,
+    bool isColored = true,
     required String message,
   }) {
     final snackBar = _buildBaseSnackBar(
       action: action,
-      backgroundColor: Colors.blue,
-      color: Colors.white,
+      backgroundColor: isColored ? Colors.blue : null,
+      color: isColored ? Colors.white : null,
       icon: Icons.info_outline_rounded,
       message: message,
     );
@@ -61,12 +63,13 @@ class SnackBarService {
   /// Shows an snackbar with warning motive.
   static void showWarningSnackBar({
     SnackBarAction? action,
+    bool isColored = true,
     required String message,
   }) {
     final snackBar = _buildBaseSnackBar(
       action: action,
-      backgroundColor: Colors.amber.shade800,
-      color: Colors.white,
+      backgroundColor: isColored ? Colors.amber.shade800 : null,
+      color: isColored ? Colors.white : null,
       icon: Icons.warning_amber_rounded,
       message: message,
     );
@@ -76,12 +79,13 @@ class SnackBarService {
   /// Shows an snackbar with success motive.
   static void showSuccessSnackBar({
     SnackBarAction? action,
+    bool isColored = true,
     required String message,
   }) {
     final snackBar = _buildBaseSnackBar(
       action: action,
-      backgroundColor: Colors.green,
-      color: Colors.white,
+      backgroundColor: isColored ? Colors.green : null,
+      color: isColored ? Colors.white : null,
       icon: Icons.check_circle_outline_rounded,
       message: message,
     );
@@ -91,12 +95,13 @@ class SnackBarService {
   /// Shows an snackbar with error motive.
   static void showErrorSnackBar({
     SnackBarAction? action,
+    bool isColored = true,
     required String message,
   }) {
     final snackBar = _buildBaseSnackBar(
       action: action,
-      backgroundColor: Colors.red,
-      color: Colors.white,
+      backgroundColor: isColored ? Colors.red : null,
+      color: isColored ? Colors.white : null,
       icon: Icons.error_outline_rounded,
       message: message,
     );
