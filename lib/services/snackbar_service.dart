@@ -10,38 +10,65 @@ class SnackBarService {
   /// The key of the current [ScaffoldMessengerState].
   static final messengerKey = GlobalKey<ScaffoldMessengerState>();
 
-  /// Shows a custom snack bar with red background and an error icon.
-  static void showErrorSnackBar(String message) {
-    final snackBar = SnackBar(
-      content: Text(message),
-      backgroundColor: Colors.red,
-      behavior: SnackBarBehavior.floating,
+  /// Builds a custom snackbar for base.
+  static SnackBar _buildBaseSnackBar({
+    Color? backgroundColor,
+    IconData? icon,
+    SnackBarAction? action,
+    required Color color,
+    required String message,
+  }) =>
+      SnackBar(
+        backgroundColor: backgroundColor,
+        behavior: SnackBarBehavior.floating,
+        action: action,
+        content: Row(
+          children: <Widget>[
+            if (icon != null)
+              Icon(
+                icon,
+                color: color,
+              ),
+            if (icon != null)
+              const SizedBox(
+                width: 10,
+              ),
+            Text(
+              message,
+              style: TextStyle(
+                color: color,
+              ),
+            ),
+          ],
+        ),
+      );
+
+  /// Shows an snackbar with information motive.
+  static void showInformationSnackBar({
+    SnackBarAction? action,
+    required String message,
+  }) {
+    final snackBar = _buildBaseSnackBar(
+      action: action,
+      backgroundColor: Colors.blue,
+      color: Colors.white,
+      icon: Icons.info_outline_rounded,
+      message: message,
     );
     messengerKey.currentState!.showSnackBar(snackBar);
   }
 
-  /// Shows a custom snack bar with blue background and an information icon.
-  static void showInformationSnackBar(String message) {
-    final snackBar = SnackBar(
-      backgroundColor: Colors.blue,
-      behavior: SnackBarBehavior.floating,
-      content: Row(
-        children: <Widget>[
-          const Icon(
-            Icons.info_outline_rounded,
-            color: Colors.white,
-          ),
-          const SizedBox(
-            width: 15,
-          ),
-          Text(
-            message,
-            style: const TextStyle(
-              color: Colors.white,
-            ),
-          ),
-        ],
-      ),
+  /// Shows an snackbar with error motive.
+  static void showErrorSnackBar({
+    SnackBarAction? action,
+    required String message,
+  }) {
+    final snackBar = _buildBaseSnackBar(
+      color: Colors.white,
+      message: message,
+      action: action,
+      backgroundColor: Colors.red,
+      icon: Icons.error_outline_rounded,
     );
     messengerKey.currentState!.showSnackBar(snackBar);
   }
