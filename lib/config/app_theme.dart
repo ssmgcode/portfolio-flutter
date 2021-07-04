@@ -6,6 +6,9 @@ class AppTheme {
   // prevents instantiation and extension.
   AppTheme._();
 
+  /// The icon of the application.
+  static const logoSvg = 'assets/ssmg-logo.svg';
+
   /// The accent color for the application.
   static final _accentColor = Colors.blue.shade700;
 
@@ -37,6 +40,10 @@ class AppTheme {
     dialogTheme: const DialogTheme(
       backgroundColor: _lightPrimaryColor,
     ),
+    snackBarTheme: const SnackBarThemeData(
+      behavior: SnackBarBehavior.floating,
+      actionTextColor: Colors.white,
+    ),
   );
 
   /// Dark theme of application.
@@ -57,6 +64,10 @@ class AppTheme {
     ),
     dialogTheme: const DialogTheme(
       backgroundColor: _darkPrimaryColor,
+    ),
+    snackBarTheme: const SnackBarThemeData(
+      behavior: SnackBarBehavior.floating,
+      actionTextColor: Colors.white,
     ),
   );
 }

@@ -1,9 +1,9 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:portfolio/config/personal_information.dart';
 import 'package:portfolio/ui/widgets/app_bar.dart';
 import 'package:portfolio/ui/widgets/custom_card.dart';
 import 'package:portfolio/ui/widgets/favorite_technologies_presentation.dart';
+import 'package:portfolio/ui/widgets/footer/footer.dart';
 import 'package:portfolio/ui/widgets/percent_bar/percent_bar.dart';
 import 'package:portfolio/ui/widgets/ssmg_poster.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -54,7 +54,8 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
+            const Footer(),
           ],
         ),
       ),
