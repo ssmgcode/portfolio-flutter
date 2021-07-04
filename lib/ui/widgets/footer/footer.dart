@@ -99,7 +99,7 @@ class _SocialMediaIcon extends StatelessWidget {
     return GestureDetector(
       onTap: () async {
         final canOpenUrl = await canLaunch(url);
-        if (!canOpenUrl) {
+        if (canOpenUrl) {
           await launch(url);
           return;
         }
