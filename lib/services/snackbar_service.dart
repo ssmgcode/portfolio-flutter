@@ -58,17 +58,65 @@ class SnackBarService {
     messengerKey.currentState!.showSnackBar(snackBar);
   }
 
+  /// Shows an snackbar with warning motive.
+  static void showWarningSnackBar({
+    SnackBarAction? action,
+    required String message,
+  }) {
+    final snackBar = _buildBaseSnackBar(
+      action: action,
+      backgroundColor: Colors.amber.shade800,
+      color: Colors.white,
+      icon: Icons.warning_amber_rounded,
+      message: message,
+    );
+    messengerKey.currentState!.showSnackBar(snackBar);
+  }
+
+  /// Shows an snackbar with success motive.
+  static void showSuccessSnackBar({
+    SnackBarAction? action,
+    required String message,
+  }) {
+    final snackBar = _buildBaseSnackBar(
+      action: action,
+      backgroundColor: Colors.green,
+      color: Colors.white,
+      icon: Icons.check_circle_outline_rounded,
+      message: message,
+    );
+    messengerKey.currentState!.showSnackBar(snackBar);
+  }
+
   /// Shows an snackbar with error motive.
   static void showErrorSnackBar({
     SnackBarAction? action,
     required String message,
   }) {
     final snackBar = _buildBaseSnackBar(
-      color: Colors.white,
-      message: message,
       action: action,
       backgroundColor: Colors.red,
+      color: Colors.white,
       icon: Icons.error_outline_rounded,
+      message: message,
+    );
+    messengerKey.currentState!.showSnackBar(snackBar);
+  }
+
+  /// Allows creating a custom snackbar based on [_buildBaseSnackBar].
+  static void showCustomSnackBar({
+    Color? backgroundColor,
+    IconData? icon,
+    SnackBarAction? action,
+    required Color color,
+    required String message,
+  }) {
+    final snackBar = _buildBaseSnackBar(
+      action: action,
+      backgroundColor: backgroundColor,
+      color: color,
+      icon: icon,
+      message: message,
     );
     messengerKey.currentState!.showSnackBar(snackBar);
   }
