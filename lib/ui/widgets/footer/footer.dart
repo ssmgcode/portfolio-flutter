@@ -62,6 +62,7 @@ class _SocialMedia extends StatelessWidget {
         _SocialMediaIcon(
           iconName: 'assets/github.svg',
           url: PersonalInformation.githubProfileUrl,
+          tooltip: 'GitHub',
         ),
         SizedBox(
           width: 10,
@@ -69,6 +70,7 @@ class _SocialMedia extends StatelessWidget {
         _SocialMediaIcon(
           iconName: 'assets/instagram.svg',
           url: PersonalInformation.instagramProfileUrl,
+          tooltip: 'Instagram',
         ),
         SizedBox(
           width: 10,
@@ -76,6 +78,7 @@ class _SocialMedia extends StatelessWidget {
         _SocialMediaIcon(
           iconName: 'assets/youtube.svg',
           url: PersonalInformation.youtubeProfileUrl,
+          tooltip: 'YouTube',
         ),
       ],
     );
@@ -87,17 +90,19 @@ class _SocialMediaIcon extends StatelessWidget {
     Key? key,
     required this.iconName,
     required this.url,
+    this.tooltip,
   }) : super(key: key);
 
   final String iconName;
   final String url;
+  final String? tooltip;
 
   @override
   Widget build(BuildContext context) {
     final colorForSvg =
         DefaultTextStyle.of(context).style.color!.withOpacity(0.6);
-    return GestureDetector(
-      onTap: () async {
+    return IconButton(
+      onPressed: () async {
         final canOpenUrl = await canLaunch(url);
         if (canOpenUrl) {
           await launch(url);
@@ -123,7 +128,8 @@ class _SocialMediaIcon extends StatelessWidget {
           );
         }
       },
-      child: SvgPicture.asset(
+      tooltip: tooltip,
+      icon: SvgPicture.asset(
         iconName,
         color: colorForSvg,
         height: 35,
