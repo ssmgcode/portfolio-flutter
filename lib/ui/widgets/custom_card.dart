@@ -116,9 +116,10 @@ class _CustomCardHeader extends StatelessWidget {
                 Icon(
                   icon,
                 ),
-              const SizedBox(
-                width: 10,
-              ),
+              if (icon != null)
+                const SizedBox(
+                  width: 10,
+                ),
               if (title != null)
                 Text(
                   title!,
