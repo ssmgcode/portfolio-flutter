@@ -44,6 +44,11 @@ class AppTheme {
       behavior: SnackBarBehavior.floating,
       actionTextColor: Colors.white,
     ),
+    cardTheme: CardTheme(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+    ),
   );
 
   /// Dark theme of application.
@@ -68,6 +73,11 @@ class AppTheme {
     snackBarTheme: const SnackBarThemeData(
       behavior: SnackBarBehavior.floating,
       actionTextColor: Colors.white,
+    ),
+    cardTheme: CardTheme(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
     ),
   );
 }
