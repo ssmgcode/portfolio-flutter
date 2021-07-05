@@ -64,6 +64,7 @@ class CustomCard extends StatelessWidget {
           fontSize: 18,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (displayHeader)
               _CustomCardHeader(
