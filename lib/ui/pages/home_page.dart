@@ -22,10 +22,10 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             const SSMGPoster(),
-            Container(
+            Padding(
               padding: const EdgeInsets.symmetric(
-                vertical: 20,
-                horizontal: 10,
+                vertical: 20.0,
+                horizontal: 10.0,
               ),
               child: SizedBox(
                 width: 1000,
