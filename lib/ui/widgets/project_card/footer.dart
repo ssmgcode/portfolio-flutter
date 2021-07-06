@@ -18,16 +18,19 @@ class ProjectCardFooter extends StatelessWidget {
     return Column(
       children: <Widget>[
         if (project.repositoryUrl != null)
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton.icon(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                primary: DefaultTextStyle.of(context).style.color,
-                onPrimary: Theme.of(context).primaryColor,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  primary: DefaultTextStyle.of(context).style.color,
+                  onPrimary: Theme.of(context).primaryColor,
+                ),
+                icon: const Icon(Boxicons.bxl_github),
+                label: const Text('Visit on Github'),
               ),
-              icon: const Icon(Boxicons.bxl_github),
-              label: const Text('Visit on Github'),
             ),
           ),
         Row(
