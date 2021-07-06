@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio/config/personal_information.dart';
 import 'package:portfolio/models/project_model.dart';
 import 'package:portfolio/models/technologies_enum.dart';
 import 'package:portfolio/ui/widgets/app_bar.dart';
@@ -10,33 +12,14 @@ const List<Project> myProjects = [
   Project(
     name: 'SSMG Code Portfolio',
     description:
-        'My personal portfolio build on Flutter and available for Web and Android.',
+        'My personal portfolio built on Flutter and available for Web and Android.',
     technologies: [
       Technology.dart,
       Technology.flutter,
       Technology.go,
-      Technology.nodejs,
-      Technology.typescript,
-      Technology.svelte,
-      Technology.dart,
-      Technology.flutter,
-      Technology.go,
-      Technology.nodejs,
-      Technology.typescript,
-      Technology.svelte,
     ],
-  ),
-  Project(
-    name: 'Movies application',
-    description: 'Watch popular and trend movies. Search your favorites.',
-    technologies: [
-      Technology.dart,
-      Technology.flutter,
-    ],
-    repositoryUrl: 'https://github.com/ssmgcode',
-    webUrl: 'https://github.com/ssmgcode',
-    appleAppStoreUrl: 'https://github.com/ssmgcode',
-    googlePlayStoreUrl: 'https://github.com/ssmgcode',
+    repositoryUrl: PersonalInformation.projectRepositoryUrl,
+    webUrl: 'https://ssmgcode-portfolio.vercel.app',
   ),
 ];
 
@@ -71,10 +54,27 @@ class ProjectsPage extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              (_, int index) => _ProjectCard(
-                project: myProjects[index],
+              (_, int index) => Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10.0,
+                ),
+                child: SizedBox(
+                  width: 1000,
+                  child: _ProjectCard(
+                    project: myProjects[index],
+                  ),
+                ),
               ),
               childCount: myProjects.length,
+            ),
+          ),
+          const SliverList(
+            delegate: SliverChildListDelegate.fixed(
+              <Widget>[
+                SizedBox(
+                  height: 25,
+                ),
+              ],
             ),
           ),
           const SliverFillRemaining(
@@ -104,6 +104,9 @@ class _ProjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.only(
+        bottom: 15.0,
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: 15.0,
@@ -138,6 +141,13 @@ class _ProjectCard extends StatelessWidget {
             _TechnologiesManager(
               technologies: project.technologies,
             ),
+            if (project.repositoryUrl != null ||
+                project.webUrl != null ||
+                project.googlePlayStoreUrl != null ||
+                project.appleAppStoreUrl != null)
+              const SizedBox(
+                height: 15,
+              ),
             _ProjectCardFooter(
               project: project,
             ),
@@ -162,8 +172,8 @@ class _TechnologiesManager extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: [
-          for (Technology technology in technologies) ...[
+        children: <Widget>[
+          for (Technology technology in technologies) ...<Widget>[
             if (technology == Technology.dart)
               const _TechnologyTag(
                 name: 'Dart',
@@ -273,6 +283,34 @@ class _ProjectCardFooter extends StatelessWidget {
                   ),
                   icon: const Icon(Icons.language_outlined),
                   label: const Text('Web'),
+                ),
+              ),
+            const SizedBox(
+              width: 5,
+            ),
+            if (project.googlePlayStoreUrl != null)
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                    primary: DefaultTextStyle.of(context).style.color,
+                  ),
+                  icon: const Icon(Boxicons.bxl_play_store),
+                  label: const Text('Get'),
+                ),
+              ),
+            const SizedBox(
+              width: 5,
+            ),
+            if (project.appleAppStoreUrl != null)
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                    primary: DefaultTextStyle.of(context).style.color,
+                  ),
+                  icon: const Icon(Boxicons.bxl_apple),
+                  label: const Text('Get'),
                 ),
               ),
           ],
