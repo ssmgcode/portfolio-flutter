@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/models/project_model.dart';
 import 'package:portfolio/models/technologies_enum.dart';
 import 'package:portfolio/ui/widgets/app_bar.dart';
@@ -32,6 +33,10 @@ const List<Project> myProjects = [
       Technology.dart,
       Technology.flutter,
     ],
+    repositoryUrl: 'https://github.com/ssmgcode',
+    webUrl: 'https://github.com/ssmgcode',
+    appleAppStoreUrl: 'https://github.com/ssmgcode',
+    googlePlayStoreUrl: 'https://github.com/ssmgcode',
   ),
 ];
 
@@ -50,22 +55,14 @@ class ProjectsPage extends StatelessWidget {
         ),
         slivers: <Widget>[
           SliverList(
-            delegate: SliverChildListDelegate(
+            delegate: SliverChildListDelegate.fixed(
               <Widget>[
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 20.0,
-                    horizontal: 10.0,
-                  ),
-                  child: SizedBox(
-                    width: 1000,
-                    child: Column(
-                      children: [
-                        Text(
-                          'Projects',
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
-                      ],
+                  padding: const EdgeInsets.symmetric(vertical: 15.0),
+                  child: Center(
+                    child: Text(
+                      'Projects',
+                      style: Theme.of(context).textTheme.headline3,
                     ),
                   ),
                 ),
@@ -108,7 +105,10 @@ class _ProjectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.symmetric(
+          vertical: 15.0,
+          horizontal: 10.0,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -137,6 +137,9 @@ class _ProjectCard extends StatelessWidget {
             ),
             _TechnologiesManager(
               technologies: project.technologies,
+            ),
+            _ProjectCardFooter(
+              project: project,
             ),
           ],
         ),
@@ -227,6 +230,54 @@ class _TechnologyTag extends StatelessWidget {
         ),
       ),
       child: Text(name),
+    );
+  }
+}
+
+class _ProjectCardFooter extends StatelessWidget {
+  const _ProjectCardFooter({
+    Key? key,
+    required this.project,
+  }) : super(key: key);
+
+  final Project project;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        if (project.repositoryUrl != null)
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                primary: DefaultTextStyle.of(context).style.color,
+                onPrimary: Theme.of(context).primaryColor,
+              ),
+              icon: SvgPicture.asset(
+                'assets/github.svg',
+                color: Theme.of(context).primaryColor,
+              ),
+              label: const Text('Visit on Github'),
+            ),
+          ),
+        Row(
+          children: <Widget>[
+            if (project.webUrl != null)
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                    primary: DefaultTextStyle.of(context).style.color,
+                  ),
+                  icon: const Icon(Icons.language_outlined),
+                  label: const Text('Web'),
+                ),
+              ),
+          ],
+        ),
+      ],
     );
   }
 }
