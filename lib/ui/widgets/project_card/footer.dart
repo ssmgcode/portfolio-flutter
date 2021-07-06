@@ -33,11 +33,9 @@ class ProjectCardFooter extends StatelessWidget {
         Row(
           children: <Widget>[
             if (project.webUrl != null)
-              const Expanded(
-                child: _SecondaryButton(
-                  iconData: Icons.language_outlined,
-                  label: 'Web',
-                ),
+              const _SecondaryButton(
+                iconData: Icons.language_outlined,
+                label: 'Web',
               ),
             if (project.webUrl != null && project.googlePlayStoreUrl != null ||
                 project.appleAppStoreUrl != null)
@@ -45,11 +43,9 @@ class ProjectCardFooter extends StatelessWidget {
                 width: 5,
               ),
             if (project.googlePlayStoreUrl != null)
-              const Expanded(
-                child: _SecondaryButton(
-                  iconData: Boxicons.bxl_play_store,
-                  label: 'Get',
-                ),
+              const _SecondaryButton(
+                iconData: Boxicons.bxl_play_store,
+                label: 'Get',
               ),
             if (project.googlePlayStoreUrl != null && project.webUrl != null ||
                 project.appleAppStoreUrl != null)
@@ -57,11 +53,9 @@ class ProjectCardFooter extends StatelessWidget {
                 width: 5,
               ),
             if (project.appleAppStoreUrl != null)
-              const Expanded(
-                child: _SecondaryButton(
-                  iconData: Boxicons.bxl_apple,
-                  label: 'Get',
-                ),
+              const _SecondaryButton(
+                iconData: Boxicons.bxl_apple,
+                label: 'Get',
               ),
           ],
         ),
