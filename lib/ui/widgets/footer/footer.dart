@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/config/app_theme.dart';
 import 'package:portfolio/config/personal_information.dart';
-import 'package:portfolio/services/snackbar_service.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:portfolio/utils/open_url_with_copy_to_clipboard_fallback.dart'
+    as utils;
 
 /// The general footer of the application.
 class Footer extends StatelessWidget {
@@ -105,30 +104,7 @@ class _SocialMediaIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () async {
-        final canOpenUrl = await canLaunch(url);
-        if (canOpenUrl) {
-          await launch(url);
-          return;
-        }
-        try {
-          await Clipboard.setData(
-            ClipboardData(
-              text: url,
-            ),
-          );
-          SnackBarService.showInformationSnackBar(
-            message: 'URL copied to clipboard',
-            action: SnackBarAction(
-              label: 'Dismiss',
-              onPressed: () {},
-            ),
-          );
-        } catch (error) {
-          SnackBarService.showInformationSnackBar(
-            message: url,
-            isColored: false,
-          );
-        }
+        await utils.openUrlWithCopyToClipboardFallback(url);
       },
       tooltip: tooltip,
       iconSize: 35,
