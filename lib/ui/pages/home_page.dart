@@ -164,6 +164,9 @@ class _ProjectsSection extends StatelessWidget {
               ),
               child: const Text('Explore my projects'),
             ),
+            const SizedBox(
+              height: 10,
+            ),
             OutlinedButton(
               onPressed: () {},
               style: OutlinedButton.styleFrom(
