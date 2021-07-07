@@ -70,7 +70,7 @@ class ProjectsPage extends StatelessWidget {
                   ),
                   const Spacer(),
                   const SizedBox(
-                    height: 250,
+                    height: 252,
                     child: Footer(),
                   ),
                 ],
