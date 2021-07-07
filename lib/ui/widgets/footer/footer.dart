@@ -25,28 +25,31 @@ class Footer extends StatelessWidget {
           ),
         ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SvgPicture.asset(
-            AppTheme.logoSvg,
-            height: 50,
-            color: DefaultTextStyle.of(context).style.color,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            'SSMG Code',
-            style: TextStyle(
-              fontSize: 16,
+      child: Opacity(
+        opacity: 0.5,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SvgPicture.asset(
+              AppTheme.logoSvg,
+              height: 50,
+              color: DefaultTextStyle.of(context).style.color,
             ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          const _SocialMedia(),
-        ],
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'SSMG Code',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            const _SocialMedia(),
+          ],
+        ),
       ),
     );
   }
@@ -61,7 +64,7 @@ class _SocialMedia extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: const <Widget>[
         _SocialMediaIcon(
-          icon: Boxicons.bxl_github,
+          icon: Icon(Boxicons.bxl_github),
           url: PersonalInformation.githubProfileUrl,
           tooltip: 'GitHub',
         ),
@@ -69,7 +72,7 @@ class _SocialMedia extends StatelessWidget {
           width: 10,
         ),
         _SocialMediaIcon(
-          icon: Boxicons.bxl_instagram,
+          icon: Icon(Boxicons.bxl_instagram),
           url: PersonalInformation.instagramProfileUrl,
           tooltip: 'Instagram',
         ),
@@ -77,7 +80,7 @@ class _SocialMedia extends StatelessWidget {
           width: 10,
         ),
         _SocialMediaIcon(
-          icon: Boxicons.bxl_youtube,
+          icon: Icon(Boxicons.bxl_youtube),
           url: PersonalInformation.youtubeProfileUrl,
           tooltip: 'YouTube',
         ),
@@ -94,14 +97,12 @@ class _SocialMediaIcon extends StatelessWidget {
     this.tooltip,
   }) : super(key: key);
 
-  final IconData icon;
+  final Widget icon;
   final String url;
   final String? tooltip;
 
   @override
   Widget build(BuildContext context) {
-    final colorForSvg =
-        DefaultTextStyle.of(context).style.color!.withOpacity(0.6);
     return IconButton(
       onPressed: () async {
         final canOpenUrl = await canLaunch(url);
@@ -130,11 +131,8 @@ class _SocialMediaIcon extends StatelessWidget {
         }
       },
       tooltip: tooltip,
-      icon: Icon(
-        icon,
-        color: colorForSvg,
-        size: 35,
-      ),
+      iconSize: 35,
+      icon: icon,
     );
   }
 }
