@@ -25,10 +25,11 @@ class ProjectCardFooter extends StatelessWidget {
             child: SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
-                onPressed: () async =>
-                    await utils.openUrlWithCopyToClipboardFallback(
-                  project.repositoryUrl!,
-                ),
+                onPressed: () async {
+                  await utils.openUrlWithCopyToClipboardFallback(
+                    project.repositoryUrl!,
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   primary: DefaultTextStyle.of(context).style.color,
                   onPrimary: Theme.of(context).primaryColor,
@@ -91,9 +92,11 @@ class _SecondaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: OutlinedButton.icon(
-        onPressed: () async => await utils.openUrlWithCopyToClipboardFallback(
-          url,
-        ),
+        onPressed: () async {
+          await utils.openUrlWithCopyToClipboardFallback(
+            url,
+          );
+        },
         style: OutlinedButton.styleFrom(
           primary: DefaultTextStyle.of(context).style.color,
         ),

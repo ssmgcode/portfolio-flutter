@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:portfolio/config/personal_information.dart';
+import 'package:portfolio/router/page_manager.dart';
 import 'package:portfolio/ui/widgets/app_bar.dart';
 import 'package:portfolio/ui/widgets/custom_card.dart';
 import 'package:portfolio/ui/widgets/favorite_technologies_presentation.dart';
 import 'package:portfolio/ui/widgets/footer/footer.dart';
 import 'package:portfolio/ui/widgets/percent_bar/percent_bar.dart';
 import 'package:portfolio/ui/widgets/ssmg_poster.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:portfolio/utils/open_url_with_copy_to_clipboard_fallback.dart'
+    as utils;
 
 /// Displays the root view of the portfolio.
 class HomePage extends StatelessWidget {
@@ -143,16 +146,36 @@ class _ProjectsSection extends StatelessWidget {
     return CustomCard(
       title: 'Projects',
       icon: Icons.task_alt_outlined,
-      actionIcon: Icons.link_outlined,
+      actionIcon: Boxicons.bxl_github,
       actionName: 'Visit',
       onActionPressed: () async {
-        if (await canLaunch(PersonalInformation.githubProfileUrl)) {
-          await launch(PersonalInformation.githubProfileUrl);
-        }
+        await utils.openUrlWithCopyToClipboardFallback(
+          PersonalInformation.githubProfileUrl,
+        );
       },
-      child: Container(
-        color: Colors.teal,
-        height: 10,
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          children: <Widget>[
+            ElevatedButton(
+              onPressed: () => RouterPageManager.of(context).openProjectsPage(),
+              style: ElevatedButton.styleFrom(
+                primary: Theme.of(context).accentColor,
+              ),
+              child: const Text('Explore my projects'),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            OutlinedButton(
+              onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                primary: Theme.of(context).accentColor,
+              ),
+              child: const Text('Contact me'),
+            ),
+          ],
+        ),
       ),
     );
   }
