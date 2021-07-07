@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/models/project_model.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
+import 'package:portfolio/models/project_model.dart';
+import 'package:portfolio/utils/open_url_with_copy_to_clipboard_fallback.dart'
+    as utils;
 
 /// Contains the action buttons to go to links of the project.
 class ProjectCardFooter extends StatelessWidget {
@@ -23,7 +25,10 @@ class ProjectCardFooter extends StatelessWidget {
             child: SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () async =>
+                    await utils.openUrlWithCopyToClipboardFallback(
+                  project.repositoryUrl!,
+                ),
                 style: ElevatedButton.styleFrom(
                   primary: DefaultTextStyle.of(context).style.color,
                   onPrimary: Theme.of(context).primaryColor,
@@ -36,9 +41,10 @@ class ProjectCardFooter extends StatelessWidget {
         Row(
           children: <Widget>[
             if (project.webUrl != null)
-              const _SecondaryButton(
-                icon: Icon(Icons.language_outlined),
+              _SecondaryButton(
+                icon: const Icon(Icons.language_outlined),
                 label: 'Web',
+                url: project.webUrl!,
               ),
             if (project.webUrl != null && project.googlePlayStoreUrl != null ||
                 project.appleAppStoreUrl != null)
@@ -46,9 +52,10 @@ class ProjectCardFooter extends StatelessWidget {
                 width: 5,
               ),
             if (project.googlePlayStoreUrl != null)
-              const _SecondaryButton(
-                icon: Icon(Boxicons.bxl_play_store),
+              _SecondaryButton(
+                icon: const Icon(Boxicons.bxl_play_store),
                 label: 'Get',
+                url: project.googlePlayStoreUrl!,
               ),
             if (project.googlePlayStoreUrl != null && project.webUrl != null ||
                 project.appleAppStoreUrl != null)
@@ -56,9 +63,10 @@ class ProjectCardFooter extends StatelessWidget {
                 width: 5,
               ),
             if (project.appleAppStoreUrl != null)
-              const _SecondaryButton(
-                icon: Icon(Boxicons.bxl_apple),
+              _SecondaryButton(
+                icon: const Icon(Boxicons.bxl_apple),
                 label: 'Get',
+                url: project.appleAppStoreUrl!,
               ),
           ],
         ),
@@ -72,16 +80,20 @@ class _SecondaryButton extends StatelessWidget {
     Key? key,
     required this.icon,
     required this.label,
+    required this.url,
   }) : super(key: key);
 
   final Widget icon;
   final String label;
+  final String url;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: OutlinedButton.icon(
-        onPressed: () {},
+        onPressed: () async => await utils.openUrlWithCopyToClipboardFallback(
+          url,
+        ),
         style: OutlinedButton.styleFrom(
           primary: DefaultTextStyle.of(context).style.color,
         ),
