@@ -93,9 +93,9 @@ packages:
   flutter_boxicons:
     dependency: "direct main"
     description:
-      name: flutter_boxicons
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: flutter_boxicons
+      relative: true
+    source: path
     version: "3.0.0"
   flutter_launcher_icons:
     dependency: "direct dev"

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/models/project_model.dart';
-import 'package:portfolio/ui/utils/boxicons.dart';
+import 'package:flutter_boxicons/flutter_boxicons.dart';
 
 /// Contains the action buttons to go to links of the project.
 class ProjectCardFooter extends StatelessWidget {
@@ -28,7 +28,7 @@ class ProjectCardFooter extends StatelessWidget {
                   primary: DefaultTextStyle.of(context).style.color,
                   onPrimary: Theme.of(context).primaryColor,
                 ),
-                icon: Boxicons.bxl_github,
+                icon: const Icon(Boxicons.bxl_github),
                 label: const Text('Visit on Github'),
               ),
             ),
@@ -47,7 +47,7 @@ class ProjectCardFooter extends StatelessWidget {
               ),
             if (project.googlePlayStoreUrl != null)
               const _SecondaryButton(
-                icon: Boxicons.bxl_play_store,
+                icon: Icon(Boxicons.bxl_play_store),
                 label: 'Get',
               ),
             if (project.googlePlayStoreUrl != null && project.webUrl != null ||
@@ -57,7 +57,7 @@ class ProjectCardFooter extends StatelessWidget {
               ),
             if (project.appleAppStoreUrl != null)
               const _SecondaryButton(
-                icon: Boxicons.bxl_apple,
+                icon: Icon(Boxicons.bxl_apple),
                 label: 'Get',
               ),
           ],

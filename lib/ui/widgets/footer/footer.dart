@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/config/app_theme.dart';
 import 'package:portfolio/config/personal_information.dart';
@@ -24,28 +25,31 @@ class Footer extends StatelessWidget {
           ),
         ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SvgPicture.asset(
-            AppTheme.logoSvg,
-            height: 50,
-            color: DefaultTextStyle.of(context).style.color,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            'SSMG Code',
-            style: TextStyle(
-              fontSize: 16,
+      child: Opacity(
+        opacity: 0.5,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SvgPicture.asset(
+              AppTheme.logoSvg,
+              height: 50,
+              color: DefaultTextStyle.of(context).style.color,
             ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          const _SocialMedia(),
-        ],
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'SSMG Code',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            const _SocialMedia(),
+          ],
+        ),
       ),
     );
   }
@@ -60,7 +64,7 @@ class _SocialMedia extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: const <Widget>[
         _SocialMediaIcon(
-          iconName: 'assets/github.svg',
+          icon: Icon(Boxicons.bxl_github),
           url: PersonalInformation.githubProfileUrl,
           tooltip: 'GitHub',
         ),
@@ -68,7 +72,7 @@ class _SocialMedia extends StatelessWidget {
           width: 10,
         ),
         _SocialMediaIcon(
-          iconName: 'assets/instagram.svg',
+          icon: Icon(Boxicons.bxl_instagram),
           url: PersonalInformation.instagramProfileUrl,
           tooltip: 'Instagram',
         ),
@@ -76,7 +80,7 @@ class _SocialMedia extends StatelessWidget {
           width: 10,
         ),
         _SocialMediaIcon(
-          iconName: 'assets/youtube.svg',
+          icon: Icon(Boxicons.bxl_youtube),
           url: PersonalInformation.youtubeProfileUrl,
           tooltip: 'YouTube',
         ),
@@ -88,19 +92,17 @@ class _SocialMedia extends StatelessWidget {
 class _SocialMediaIcon extends StatelessWidget {
   const _SocialMediaIcon({
     Key? key,
-    required this.iconName,
+    required this.icon,
     required this.url,
     this.tooltip,
   }) : super(key: key);
 
-  final String iconName;
+  final Widget icon;
   final String url;
   final String? tooltip;
 
   @override
   Widget build(BuildContext context) {
-    final colorForSvg =
-        DefaultTextStyle.of(context).style.color!.withOpacity(0.6);
     return IconButton(
       onPressed: () async {
         final canOpenUrl = await canLaunch(url);
@@ -129,11 +131,8 @@ class _SocialMediaIcon extends StatelessWidget {
         }
       },
       tooltip: tooltip,
-      icon: SvgPicture.asset(
-        iconName,
-        color: colorForSvg,
-        height: 35,
-      ),
+      iconSize: 35,
+      icon: icon,
     );
   }
 }
