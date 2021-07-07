@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:portfolio/models/project_model.dart';
+import 'package:portfolio/ui/utils/boxicons.dart';
 
 /// Contains the action buttons to go to links of the project.
 class ProjectCardFooter extends StatelessWidget {
@@ -28,7 +28,7 @@ class ProjectCardFooter extends StatelessWidget {
                   primary: DefaultTextStyle.of(context).style.color,
                   onPrimary: Theme.of(context).primaryColor,
                 ),
-                icon: const Icon(Boxicons.bxl_github),
+                icon: Boxicons.bxl_github,
                 label: const Text('Visit on Github'),
               ),
             ),
@@ -37,7 +37,7 @@ class ProjectCardFooter extends StatelessWidget {
           children: <Widget>[
             if (project.webUrl != null)
               const _SecondaryButton(
-                iconData: Icons.language_outlined,
+                icon: Icon(Icons.language_outlined),
                 label: 'Web',
               ),
             if (project.webUrl != null && project.googlePlayStoreUrl != null ||
@@ -47,7 +47,7 @@ class ProjectCardFooter extends StatelessWidget {
               ),
             if (project.googlePlayStoreUrl != null)
               const _SecondaryButton(
-                iconData: Boxicons.bxl_play_store,
+                icon: Boxicons.bxl_play_store,
                 label: 'Get',
               ),
             if (project.googlePlayStoreUrl != null && project.webUrl != null ||
@@ -57,7 +57,7 @@ class ProjectCardFooter extends StatelessWidget {
               ),
             if (project.appleAppStoreUrl != null)
               const _SecondaryButton(
-                iconData: Boxicons.bxl_apple,
+                icon: Boxicons.bxl_apple,
                 label: 'Get',
               ),
           ],
@@ -70,11 +70,11 @@ class ProjectCardFooter extends StatelessWidget {
 class _SecondaryButton extends StatelessWidget {
   const _SecondaryButton({
     Key? key,
-    required this.iconData,
+    required this.icon,
     required this.label,
   }) : super(key: key);
 
-  final IconData iconData;
+  final Widget icon;
   final String label;
 
   @override
@@ -85,7 +85,7 @@ class _SecondaryButton extends StatelessWidget {
         style: OutlinedButton.styleFrom(
           primary: DefaultTextStyle.of(context).style.color,
         ),
-        icon: Icon(iconData),
+        icon: icon,
         label: Text(label),
       ),
     );
