@@ -43,14 +43,31 @@ class ProjectsPage extends StatelessWidget {
             child: IntrinsicHeight(
               child: Column(
                 children: <Widget>[
-                  Text(
-                    'Projects',
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  for (Project project in myProjects)
-                    ProjectCard(
-                      project: project,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 15.0,
                     ),
+                    child: Text(
+                      'Projects',
+                      style: Theme.of(context).textTheme.headline3,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0,
+                    ),
+                    child: SizedBox(
+                      width: 1000,
+                      child: Column(
+                        children: <Widget>[
+                          for (Project project in myProjects)
+                            ProjectCard(
+                              project: project,
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
                   const Spacer(),
                   const SizedBox(
                     height: 250,
