@@ -31,62 +31,53 @@ class ProjectsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(
-          parent: AlwaysScrollableScrollPhysics(),
-        ),
-        slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildListDelegate.fixed(
-              <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15.0),
-                  child: Center(
+      body: LayoutBuilder(
+        builder: (_, BoxConstraints boxConstraints) => SingleChildScrollView(
+          physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics(),
+          ),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: boxConstraints.maxHeight,
+            ),
+            child: IntrinsicHeight(
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 15.0,
+                    ),
                     child: Text(
                       'Projects',
                       style: Theme.of(context).textTheme.headline3,
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (_, int index) => Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                child: SizedBox(
-                  width: 1000,
-                  child: ProjectCard(
-                    project: myProjects[index],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0,
+                    ),
+                    child: SizedBox(
+                      width: 1000,
+                      child: Column(
+                        children: <Widget>[
+                          for (Project project in myProjects)
+                            ProjectCard(
+                              project: project,
+                            ),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              childCount: myProjects.length,
-            ),
-          ),
-          const SliverList(
-            delegate: SliverChildListDelegate.fixed(
-              <Widget>[
-                SizedBox(
-                  height: 25,
-                ),
-              ],
-            ),
-          ),
-          const SliverFillRemaining(
-            hasScrollBody: false,
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: SizedBox(
-                height: 250,
-                child: Footer(),
+                  const Spacer(),
+                  const SizedBox(
+                    height: 250,
+                    child: Footer(),
+                  ),
+                ],
               ),
             ),
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

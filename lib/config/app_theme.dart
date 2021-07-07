@@ -48,6 +48,7 @@ class AppTheme {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
+      elevation: 3.0,
     ),
   );
 
@@ -78,6 +79,7 @@ class AppTheme {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
+      elevation: 3.0,
     ),
   );
 }
