@@ -49,6 +49,14 @@ class ApplicationMenu extends StatelessWidget {
             },
           ),
           ListTile(
+            title: const Text('Contact Me'),
+            leading: const Icon(Icons.phone_outlined),
+            onTap: () {
+              Navigator.pop(context);
+              RouterPageManager.of(context).openContactMePage();
+            },
+          ),
+          ListTile(
             title: const Text('More info'),
             leading: const Icon(Icons.info_outline_rounded),
             onTap: () => showAboutDialog(
