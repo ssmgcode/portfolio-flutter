@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/router/my_app_path_configuration.dart';
+import 'package:portfolio/ui/pages/contact_me_page.dart';
 import 'package:portfolio/ui/pages/home_page.dart';
 import 'package:portfolio/ui/pages/projects_page.dart';
 import 'package:portfolio/ui/pages/unknown_page.dart';
@@ -51,19 +52,7 @@ class RouterPageManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Add projects page to pages list.
-  void openProjectsPage() {
-    _pages.add(
-      MaterialPage(
-        key: UniqueKey(),
-        name: '/projects',
-        child: const ProjectsPage(),
-      ),
-    );
-    notifyListeners();
-  }
-
-  /// Add unknown page to pages list.
+  /// Add `unknown` page to pages list.
   void openUnknownPage() {
     _pages.add(
       MaterialPage(
@@ -75,14 +64,40 @@ class RouterPageManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Add `projects` page to pages list.
+  void openProjectsPage() {
+    _pages.add(
+      MaterialPage(
+        key: UniqueKey(),
+        name: '/projects',
+        child: const ProjectsPage(),
+      ),
+    );
+    notifyListeners();
+  }
+
+  /// Add `contact me` page to pages list.
+  void openContactMePage() {
+    _pages.add(
+      MaterialPage(
+        key: UniqueKey(),
+        name: '/contact-me',
+        child: const ContactMePage(),
+      ),
+    );
+    notifyListeners();
+  }
+
   /// Updates internal state of pages when external url changes.
   Future<void> setNewRoutePath(MyAppPathConfiguration configuration) async {
     if (configuration.isUnknown) {
       openUnknownPage();
-    } else if (configuration.isProjects) {
-      openProjectsPage();
     } else if (configuration.isHome) {
       openHomePage();
+    } else if (configuration.isProjects) {
+      openProjectsPage();
+    } else if (configuration.isContactMe) {
+      openContactMePage();
     }
   }
 }
