@@ -9,10 +9,10 @@ enum EmailValidationError {
 /// The model of the email of my ContactMeForm.
 class Email extends FormzInput<String, EmailValidationError> {
   /// Constructor which create a pure [FormzInput] with a given value.
-  const Email.pure({String value = ''}) : super.pure(value);
+  const Email.pure([String value = '']) : super.pure(value);
 
   /// Constructor which create a dirty [FormzInput] with a given value.
-  const Email.dirty({String value = ''}) : super.dirty(value);
+  const Email.dirty([String value = '']) : super.dirty(value);
 
   static final _emailRegex = RegExp(
     r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
