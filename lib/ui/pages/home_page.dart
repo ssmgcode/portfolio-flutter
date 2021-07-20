@@ -159,9 +159,6 @@ class _ProjectsSection extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () => RouterPageManager.of(context).openProjectsPage(),
-              style: ElevatedButton.styleFrom(
-                primary: Theme.of(context).accentColor,
-              ),
               child: const Text('Explore my projects'),
             ),
             const SizedBox(
@@ -169,9 +166,6 @@ class _ProjectsSection extends StatelessWidget {
             ),
             OutlinedButton(
               onPressed: () {},
-              style: OutlinedButton.styleFrom(
-                primary: Theme.of(context).accentColor,
-              ),
               child: const Text('Contact me'),
             ),
           ],
