@@ -19,6 +19,7 @@ class NameInput extends StatelessWidget {
     return BlocBuilder<ContactMeFormBloc, ContactMeFormState>(
       builder: (BuildContext context, ContactMeFormState state) {
         return TextFormField(
+          autofocus: true,
           initialValue: state.name.value,
           focusNode: focusNode,
           keyboardType: TextInputType.name,
