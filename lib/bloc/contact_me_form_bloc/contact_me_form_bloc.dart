@@ -25,7 +25,7 @@ class ContactMeFormBloc extends Bloc<ContactMeFormEvent, ContactMeFormState> {
     if (event is EmailChanged) {
       final email = Email.dirty(event.email);
       yield state.copyWith(
-        email: email.valid ? email : Email.pure(event.email),
+        email: email,
         status: Formz.validate(
           [
             email,
@@ -38,7 +38,7 @@ class ContactMeFormBloc extends Bloc<ContactMeFormEvent, ContactMeFormState> {
     } else if (event is MessageChanged) {
       final message = Message.dirty(event.message);
       yield state.copyWith(
-        message: message.valid ? message : Message.pure(event.message),
+        message: message,
         status: Formz.validate(
           [
             state.email,
@@ -51,7 +51,7 @@ class ContactMeFormBloc extends Bloc<ContactMeFormEvent, ContactMeFormState> {
     } else if (event is NameChanged) {
       final name = Name.dirty(event.name);
       yield state.copyWith(
-        name: name.valid ? name : Name.pure(event.name),
+        name: name,
         status: Formz.validate(
           [
             state.email,
@@ -64,7 +64,7 @@ class ContactMeFormBloc extends Bloc<ContactMeFormEvent, ContactMeFormState> {
     } else if (event is SubjectChanged) {
       final subject = Subject.dirty(event.subject);
       yield state.copyWith(
-        subject: subject.valid ? subject : Subject.pure(event.subject),
+        subject: subject,
         status: Formz.validate(
           [
             state.email,
