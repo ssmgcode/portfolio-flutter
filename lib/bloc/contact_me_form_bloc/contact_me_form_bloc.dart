@@ -17,7 +17,6 @@ class ContactMeFormBloc extends Bloc<ContactMeFormEvent, ContactMeFormState> {
   void onTransition(
       Transition<ContactMeFormEvent, ContactMeFormState> transition) {
     super.onTransition(transition);
-    print(transition);
   }
 
   @override
