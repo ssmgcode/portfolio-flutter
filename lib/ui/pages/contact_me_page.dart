@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/bloc/contact_me_form_bloc/contact_me_form_bloc.dart';
 import 'package:portfolio/ui/widgets/app_bar.dart';
 import 'package:portfolio/ui/widgets/contact_me_page_form_fields/email_input.dart';
 import 'package:portfolio/ui/widgets/contact_me_page_form_fields/message_input.dart';
@@ -58,6 +60,40 @@ class __ContactMeFormState extends State<_ContactMeForm> {
   final _emailFocusNode = FocusNode();
   final _subjectFocusNode = FocusNode();
   final _messageFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _nameFocusNode.addListener(() {
+      if (!_nameFocusNode.hasFocus) {
+        BlocProvider.of<ContactMeFormBloc>(context).add(NameUnfocused());
+      }
+    });
+    _emailFocusNode.addListener(() {
+      if (!_emailFocusNode.hasFocus) {
+        BlocProvider.of<ContactMeFormBloc>(context).add(EmailUnfocused());
+      }
+    });
+    _subjectFocusNode.addListener(() {
+      if (!_subjectFocusNode.hasFocus) {
+        BlocProvider.of<ContactMeFormBloc>(context).add(SubjectUnfocused());
+      }
+    });
+    _messageFocusNode.addListener(() {
+      if (!_messageFocusNode.hasFocus) {
+        BlocProvider.of<ContactMeFormBloc>(context).add(MessageUnfocused());
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _nameFocusNode.dispose();
+    _emailFocusNode.dispose();
+    _subjectFocusNode.dispose();
+    _messageFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
