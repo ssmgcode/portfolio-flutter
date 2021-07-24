@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:portfolio/bloc/contact_me_form_bloc/contact_me_form_bloc.dart';
+import 'package:portfolio/services/snackbar_service.dart';
 import 'package:portfolio/ui/widgets/app_bar.dart';
 import 'package:portfolio/ui/widgets/contact_me_page_form_fields/email_input.dart';
 import 'package:portfolio/ui/widgets/contact_me_page_form_fields/message_input.dart';
@@ -107,45 +109,59 @@ class __ContactMeFormState extends State<_ContactMeForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      child: SizedBox(
-        width: 700,
-        child: Card(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 20.0,
-              horizontal: 15.0,
-            ),
-            child: Form(
-              child: Column(
-                children: <Widget>[
-                  NameInput(
-                    focusNode: _nameFocusNode,
-                  ),
-                  const SizedBox(
-                    height: 15.0,
-                  ),
-                  EmailInput(
-                    focusNode: _emailFocusNode,
-                  ),
-                  const SizedBox(
-                    height: 15.0,
-                  ),
-                  SubjectInput(
-                    focusNode: _subjectFocusNode,
-                  ),
-                  const SizedBox(
-                    height: 15.0,
-                  ),
-                  MessageInput(
-                    focusNode: _messageFocusNode,
-                  ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  const ContactMeFormSubmitButton(),
-                ],
+    return BlocListener<ContactMeFormBloc, ContactMeFormState>(
+      listener: (BuildContext context, ContactMeFormState state) {
+        if (state.status.isSubmissionSuccess) {
+          SnackBarService.messengerKey.currentState!.hideCurrentSnackBar();
+          SnackBarService.showSuccessSnackBar(
+              message: 'Thank you for contacting me!');
+        }
+        if (state.status.isSubmissionFailure) {
+          SnackBarService.messengerKey.currentState!.hideCurrentSnackBar();
+          SnackBarService.showErrorSnackBar(
+              message: "Can't send the email, try again later.");
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: SizedBox(
+          width: 700,
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 20.0,
+                horizontal: 15.0,
+              ),
+              child: Form(
+                child: Column(
+                  children: <Widget>[
+                    NameInput(
+                      focusNode: _nameFocusNode,
+                    ),
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                    EmailInput(
+                      focusNode: _emailFocusNode,
+                    ),
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                    SubjectInput(
+                      focusNode: _subjectFocusNode,
+                    ),
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                    MessageInput(
+                      focusNode: _messageFocusNode,
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    const ContactMeFormSubmitButton(),
+                  ],
+                ),
               ),
             ),
           ),
