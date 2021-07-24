@@ -21,10 +21,20 @@ class ContactMeFormSubmitButton extends StatelessWidget {
         return SizedBox(
           width: double.infinity,
           child: ElevatedButton.icon(
-            onPressed: state.status.isValidated
-                ? () => contactMeFormBloc.add(FormSubmitted())
-                : null,
-            icon: const Icon(Icons.send_outlined),
+            onPressed:
+                state.status.isValidated && !state.status.isSubmissionInProgress
+                    ? () => contactMeFormBloc.add(FormSubmitted())
+                    : null,
+            icon: state.status.isSubmissionInProgress
+                ? SizedBox(
+                    height: 17,
+                    width: 17,
+                    child: CircularProgressIndicator(
+                      color: Theme.of(context).disabledColor,
+                      strokeWidth: 2.5,
+                    ),
+                  )
+                : const Icon(Icons.send_outlined),
             label: const Text('Contact Me'),
           ),
         );
