@@ -29,6 +29,17 @@ class SubjectInput extends StatelessWidget {
             labelText: 'Subject',
             hintText: 'Subject',
             prefixIcon: const Icon(Icons.subject_outlined),
+            suffixIcon: state.subject.pure
+                ? null
+                : state.subject.valid
+                    ? const Icon(
+                        Icons.check_circle_outline_rounded,
+                        color: Colors.green,
+                      )
+                    : const Icon(
+                        Icons.error_outline_rounded,
+                        color: Colors.red,
+                      ),
             errorText: state.subject.invalid
                 ? 'Subject must have at least 2 characters.'
                 : null,

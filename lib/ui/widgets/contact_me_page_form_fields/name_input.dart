@@ -34,15 +34,15 @@ class NameInput extends StatelessWidget {
                 ? null
                 : state.name.valid
                     ? const Icon(
-                        Icons.check_circle_outline,
+                        Icons.check_circle_outline_rounded,
                         color: Colors.green,
                       )
                     : const Icon(
-                        Icons.error_outline,
+                        Icons.error_outline_rounded,
                         color: Colors.red,
                       ),
             errorText: state.name.invalid
-                ? 'Name must have at least 3 characters.'
+                ? 'Name must have at least 2 characters.'
                 : null,
           ),
           onChanged: (String value) => contactMeFormBloc.add(

@@ -28,6 +28,17 @@ class EmailInput extends StatelessWidget {
             labelText: 'Email',
             hintText: 'example@mail.com',
             prefixIcon: const Icon(Icons.email_outlined),
+            suffixIcon: state.email.pure
+                ? null
+                : state.email.valid
+                    ? const Icon(
+                        Icons.check_circle_outline_rounded,
+                        color: Colors.green,
+                      )
+                    : const Icon(
+                        Icons.error_outline_rounded,
+                        color: Colors.red,
+                      ),
             errorText: state.email.invalid ? 'Enter a valid email' : null,
           ),
           onChanged: (String value) => contactMeFormBloc.add(
