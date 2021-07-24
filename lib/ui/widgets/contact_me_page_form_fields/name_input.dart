@@ -30,8 +30,19 @@ class NameInput extends StatelessWidget {
             labelText: 'Name',
             hintText: 'Name',
             prefixIcon: const Icon(Icons.person_outlined),
+            suffixIcon: state.name.pure
+                ? null
+                : state.name.valid
+                    ? const Icon(
+                        Icons.check_circle_outline,
+                        color: Colors.green,
+                      )
+                    : const Icon(
+                        Icons.error_outline,
+                        color: Colors.red,
+                      ),
             errorText: state.name.invalid
-                ? 'Name must have at least 2 characters.'
+                ? 'Name must have at least 3 characters.'
                 : null,
           ),
           onChanged: (String value) => contactMeFormBloc.add(
