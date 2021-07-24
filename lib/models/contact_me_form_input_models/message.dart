@@ -16,6 +16,6 @@ class Message extends FormzInput<String, MessageValidationError> {
 
   @override
   MessageValidationError? validator(String value) {
-    return value.length > 2 ? null : MessageValidationError.invalid;
+    return value.length >= 2 ? null : MessageValidationError.invalid;
   }
 }

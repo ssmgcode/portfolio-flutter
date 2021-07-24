@@ -16,6 +16,6 @@ class Subject extends FormzInput<String, SubjectValidationError> {
 
   @override
   SubjectValidationError? validator(String value) {
-    return value.length > 2 ? null : SubjectValidationError.invalid;
+    return value.length >= 2 ? null : SubjectValidationError.invalid;
   }
 }

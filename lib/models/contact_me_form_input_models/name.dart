@@ -16,6 +16,6 @@ class Name extends FormzInput<String, NameValidationError> {
 
   @override
   NameValidationError? validator(String value) {
-    return value.length > 2 ? null : NameValidationError.invalid;
+    return value.length >= 2 ? null : NameValidationError.invalid;
   }
 }
