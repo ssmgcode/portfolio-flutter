@@ -6,6 +6,7 @@ import 'package:portfolio/ui/widgets/contact_me_page_form_fields/email_input.dar
 import 'package:portfolio/ui/widgets/contact_me_page_form_fields/message_input.dart';
 import 'package:portfolio/ui/widgets/contact_me_page_form_fields/name_input.dart';
 import 'package:portfolio/ui/widgets/contact_me_page_form_fields/subject_input.dart';
+import 'package:portfolio/ui/widgets/contact_me_page_form_fields/submit_button.dart';
 import 'package:portfolio/ui/widgets/footer/footer.dart';
 
 /// Contains a form to send an email to contact me.
@@ -143,14 +144,7 @@ class __ContactMeFormState extends State<_ContactMeForm> {
                   const SizedBox(
                     height: 20.0,
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(Icons.send_outlined),
-                      label: const Text('Contact Me'),
-                    ),
-                  ),
+                  const ContactMeFormSubmitButton(),
                 ],
               ),
             ),
