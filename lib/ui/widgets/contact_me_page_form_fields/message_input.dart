@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/bloc/contact_me_form_bloc/contact_me_form_bloc.dart';
 
 /// The field where user will enter the message.
 class MessageInput extends StatelessWidget {
@@ -13,14 +15,29 @@ class MessageInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      maxLines: 8,
-      keyboardType: TextInputType.multiline,
-      decoration: const InputDecoration(
-        border: OutlineInputBorder(),
-        labelText: 'Message',
-        alignLabelWithHint: true,
-      ),
+    final contactMeFormBloc = BlocProvider.of<ContactMeFormBloc>(context);
+    return BlocBuilder<ContactMeFormBloc, ContactMeFormState>(
+      builder: (BuildContext context, ContactMeFormState state) {
+        return TextFormField(
+          maxLines: 6,
+          initialValue: state.message.value,
+          focusNode: focusNode,
+          keyboardType: TextInputType.multiline,
+          decoration: InputDecoration(
+            border: const OutlineInputBorder(),
+            labelText: 'Message',
+            alignLabelWithHint: true,
+            errorText: state.message.invalid
+                ? 'Message must have at least 2 characters.'
+                : null,
+          ),
+          onChanged: (String value) => contactMeFormBloc.add(
+            MessageChanged(
+              message: value,
+            ),
+          ),
+        );
+      },
     );
   }
 }

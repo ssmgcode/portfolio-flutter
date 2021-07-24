@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/bloc/contact_me_form_bloc/contact_me_form_bloc.dart';
 
 /// The field where user will enter the subject of the message.
 class SubjectInput extends StatelessWidget {
@@ -13,16 +15,31 @@ class SubjectInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: TextInputType.text,
-      textCapitalization: TextCapitalization.sentences,
-      textInputAction: TextInputAction.next,
-      decoration: const InputDecoration(
-        border: OutlineInputBorder(),
-        labelText: 'Subject',
-        hintText: 'Subject',
-        prefixIcon: Icon(Icons.subject_outlined),
-      ),
+    final contactMeFormBloc = BlocProvider.of<ContactMeFormBloc>(context);
+    return BlocBuilder<ContactMeFormBloc, ContactMeFormState>(
+      builder: (BuildContext context, ContactMeFormState state) {
+        return TextFormField(
+          initialValue: state.subject.value,
+          keyboardType: TextInputType.text,
+          focusNode: focusNode,
+          textCapitalization: TextCapitalization.sentences,
+          textInputAction: TextInputAction.next,
+          decoration: InputDecoration(
+            border: const OutlineInputBorder(),
+            labelText: 'Subject',
+            hintText: 'Subject',
+            prefixIcon: const Icon(Icons.subject_outlined),
+            errorText: state.subject.invalid
+                ? 'Subject must have at least 2 characters.'
+                : null,
+          ),
+          onChanged: (String value) => contactMeFormBloc.add(
+            SubjectChanged(
+              subject: value,
+            ),
+          ),
+        );
+      },
     );
   }
 }
