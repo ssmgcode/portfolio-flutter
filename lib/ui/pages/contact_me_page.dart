@@ -6,6 +6,7 @@ import 'package:portfolio/ui/widgets/contact_me_page_form_fields/email_input.dar
 import 'package:portfolio/ui/widgets/contact_me_page_form_fields/message_input.dart';
 import 'package:portfolio/ui/widgets/contact_me_page_form_fields/name_input.dart';
 import 'package:portfolio/ui/widgets/contact_me_page_form_fields/subject_input.dart';
+import 'package:portfolio/ui/widgets/footer/footer.dart';
 
 /// Contains a form to send an email to contact me.
 class ContactMePage extends StatelessWidget {
@@ -38,6 +39,14 @@ class ContactMePage extends StatelessWidget {
                     ),
                   ),
                   const _ContactMeForm(),
+                  const Spacer(),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const SizedBox(
+                    height: 252,
+                    child: Footer(),
+                  ),
                 ],
               ),
             ),
