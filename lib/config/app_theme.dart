@@ -26,7 +26,7 @@ class AppTheme {
     fontFamily: _fontFamily,
     brightness: Brightness.light,
     primaryColor: _lightPrimaryColor,
-    accentColor: _accentColor,
+    primarySwatch: Colors.blue,
     toggleableActiveColor: _accentColor,
     scaffoldBackgroundColor: const Color.fromRGBO(248, 249, 250, 1),
     appBarTheme: const AppBarTheme(
@@ -57,7 +57,7 @@ class AppTheme {
     fontFamily: _fontFamily,
     brightness: Brightness.dark,
     primaryColor: _darkPrimaryColor,
-    accentColor: _accentColor,
+    primarySwatch: Colors.blue,
     toggleableActiveColor: _accentColor,
     scaffoldBackgroundColor: const Color.fromRGBO(25, 26, 27, 1),
     appBarTheme: const AppBarTheme(

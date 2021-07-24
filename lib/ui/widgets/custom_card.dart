@@ -131,9 +131,6 @@ class _CustomCardHeader extends StatelessWidget {
           ),
           TextButton(
             onPressed: onActionPressed,
-            style: TextButton.styleFrom(
-              primary: Theme.of(context).accentColor,
-            ),
             child: Row(
               // crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[

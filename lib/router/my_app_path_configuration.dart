@@ -6,6 +6,9 @@ class MyAppPathConfiguration {
   /// Sets the current application path configuration to projects.
   const MyAppPathConfiguration.projects() : _currentPage = 'projects';
 
+  /// Sets the current application path configuration to contact-me.
+  const MyAppPathConfiguration.contactMe() : _currentPage = 'contact-me';
+
   /// Sets the current application path configuration to unknown.
   const MyAppPathConfiguration.unknown() : _currentPage = '404';
 
@@ -16,6 +19,10 @@ class MyAppPathConfiguration {
 
   /// Returns `true` if the current application path configuration is projects.
   bool get isProjects => _currentPage == 'projects';
+
+  /// Returns `true` if the current application path configuration is
+  /// contact-me.
+  bool get isContactMe => _currentPage == 'contact-me';
 
   /// Returns `true` if the current application path configuration is unknown.
   bool get isUnknown => _currentPage == '404';
@@ -33,6 +40,11 @@ class MyAppPathConfiguration {
     // path: /projects
     if (uri.pathSegments.first == 'projects') {
       return const MyAppPathConfiguration.projects();
+    }
+
+    // path: /contact-me
+    if (uri.pathSegments.first == 'contact-me') {
+      return const MyAppPathConfiguration.contactMe();
     }
 
     return const MyAppPathConfiguration.unknown();

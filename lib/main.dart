@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
+import 'package:portfolio/bloc/contact_me_form_bloc/contact_me_form_bloc.dart';
 import 'package:portfolio/config/app_theme.dart';
 import 'package:portfolio/router/my_app_route_information_parser.dart';
 import 'package:portfolio/router/my_app_router_delegate.dart';
@@ -24,6 +25,9 @@ class MyAppStateProvider extends StatelessWidget {
       providers: [
         BlocProvider<ApplicationThemeModeCubit>(
           create: (_) => ApplicationThemeModeCubit(),
+        ),
+        BlocProvider<ContactMeFormBloc>(
+          create: (_) => ContactMeFormBloc(),
         ),
       ],
       child: const MyApp(),

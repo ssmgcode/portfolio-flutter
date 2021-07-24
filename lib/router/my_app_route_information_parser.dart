@@ -33,6 +33,12 @@ class MyAppRouteInformationParser
       );
     }
 
+    if (configuration.isContactMe) {
+      return const RouteInformation(
+        location: '/contact-me',
+      );
+    }
+
     return super.restoreRouteInformation(configuration);
   }
 }
