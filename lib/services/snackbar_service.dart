@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/config/display_breakpoints.dart';
 
 /// This controls the [ScaffoldMessengerState] and has methods to show custom
 /// [SnackBar]s.
@@ -17,32 +18,36 @@ class SnackBarService {
     IconData? icon,
     SnackBarAction? action,
     required String message,
-  }) =>
-      SnackBar(
-        backgroundColor: backgroundColor,
-        action: action,
-        content: Row(
-          children: <Widget>[
-            if (icon != null)
-              Icon(
-                icon,
-                color: color ?? Colors.white,
-              ),
-            if (icon != null)
-              const SizedBox(
-                width: 10,
-              ),
-            Expanded(
-              child: Text(
-                message,
-                style: TextStyle(
-                  color: color,
-                ),
+  }) {
+    final size = MediaQuery.of(messengerKey.currentContext!).size;
+    return SnackBar(
+      backgroundColor: backgroundColor,
+      action: action,
+      width: size.width > DisplayBreakpoints.mobile ? 700 : null,
+      behavior: SnackBarBehavior.floating,
+      content: Row(
+        children: <Widget>[
+          if (icon != null)
+            Icon(
+              icon,
+              color: color ?? Colors.white,
+            ),
+          if (icon != null)
+            const SizedBox(
+              width: 10,
+            ),
+          Expanded(
+            child: Text(
+              message,
+              style: TextStyle(
+                color: color,
               ),
             ),
-          ],
-        ),
-      );
+          ),
+        ],
+      ),
+    );
+  }
 
   /// Shows an snackbar with information motive.
   static void showInformationSnackBar({
