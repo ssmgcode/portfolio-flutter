@@ -114,12 +114,14 @@ class __ContactMeFormState extends State<_ContactMeForm> {
         if (state.status.isSubmissionSuccess) {
           SnackBarService.messengerKey.currentState!.hideCurrentSnackBar();
           SnackBarService.showSuccessSnackBar(
-              message: 'Thank you for contacting me!');
+            message: 'Thank you for contacting me!',
+          );
         }
         if (state.status.isSubmissionFailure) {
           SnackBarService.messengerKey.currentState!.hideCurrentSnackBar();
           SnackBarService.showErrorSnackBar(
-              message: "Can't send the email, try again later.");
+            message: "Can't send the email, try again later.",
+          );
         }
       },
       child: Padding(
