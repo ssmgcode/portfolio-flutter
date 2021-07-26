@@ -41,9 +41,13 @@ class RouterPageManager extends ChangeNotifier {
       );
 
   /// Removes the page which did pop from the pages list.
-  void didPop(RouteSettings settings) {
-    _pages.remove(settings);
-    notifyListeners();
+  Future<bool> popRoute() {
+    if (_pages.length > 1) {
+      _pages.removeLast();
+      notifyListeners();
+      return Future.value(true);
+    }
+    return Future.value(false);
   }
 
   /// Deletes all pages except home page.
