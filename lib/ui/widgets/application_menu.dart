@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
 import 'package:portfolio/config/personal_information.dart';
 import 'package:portfolio/router/page_manager.dart';
+import 'package:portfolio/utils/utils.dart' as utils
+    show openUrlWithCopyToClipboardFallback;
 
 /// A custom bottom sheet for mobile application menu.
 class ApplicationMenu extends StatelessWidget {
@@ -50,7 +52,7 @@ class ApplicationMenu extends StatelessWidget {
           ),
           ListTile(
             title: const Text('Contact Me'),
-            leading: const Icon(Icons.phone_outlined),
+            leading: const Icon(Icons.mail_outline_outlined),
             onTap: () {
               Navigator.pop(context);
               RouterPageManager.of(context).openContactMePage();
@@ -70,12 +72,11 @@ class ApplicationMenu extends StatelessWidget {
               children: <Widget>[
                 ListTile(
                   title: const Text('View on Github'),
-                  leading: const Icon(Icons.link_outlined),
+                  leading: const Icon(Boxicons.bxl_github),
                   onTap: () async {
-                    if (await canLaunch(
-                        PersonalInformation.projectRepositoryUrl)) {
-                      await launch(PersonalInformation.projectRepositoryUrl);
-                    }
+                    await utils.openUrlWithCopyToClipboardFallback(
+                      PersonalInformation.projectRepositoryUrl,
+                    );
                   },
                 ),
               ],
