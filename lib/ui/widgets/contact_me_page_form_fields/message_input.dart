@@ -16,11 +16,14 @@ class MessageInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final contactMeFormBloc = BlocProvider.of<ContactMeFormBloc>(context);
+    final controller = TextEditingController(
+      text: contactMeFormBloc.state.message.value,
+    );
     return BlocBuilder<ContactMeFormBloc, ContactMeFormState>(
       builder: (BuildContext context, ContactMeFormState state) {
         return TextFormField(
           maxLines: 6,
-          initialValue: state.message.value,
+          controller: controller,
           focusNode: focusNode,
           keyboardType: TextInputType.multiline,
           decoration: InputDecoration(

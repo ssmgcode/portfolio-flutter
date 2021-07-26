@@ -16,11 +16,14 @@ class EmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final contactMeFormBloc = BlocProvider.of<ContactMeFormBloc>(context);
+    final controller = TextEditingController(
+      text: contactMeFormBloc.state.email.value,
+    );
     return BlocBuilder<ContactMeFormBloc, ContactMeFormState>(
       builder: (BuildContext context, ContactMeFormState state) {
         return TextFormField(
           keyboardType: TextInputType.emailAddress,
-          initialValue: state.email.value,
+          controller: controller,
           focusNode: focusNode,
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(

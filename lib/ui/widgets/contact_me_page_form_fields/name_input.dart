@@ -16,11 +16,14 @@ class NameInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final contactMeFormBloc = BlocProvider.of<ContactMeFormBloc>(context);
+    final controller = TextEditingController(
+      text: contactMeFormBloc.state.name.value,
+    );
     return BlocBuilder<ContactMeFormBloc, ContactMeFormState>(
       builder: (BuildContext context, ContactMeFormState state) {
         return TextFormField(
           autofocus: true,
-          initialValue: state.name.value,
+          controller: controller,
           focusNode: focusNode,
           keyboardType: TextInputType.name,
           textCapitalization: TextCapitalization.words,

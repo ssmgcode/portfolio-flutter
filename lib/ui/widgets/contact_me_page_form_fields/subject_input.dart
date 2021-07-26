@@ -16,10 +16,13 @@ class SubjectInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final contactMeFormBloc = BlocProvider.of<ContactMeFormBloc>(context);
+    final controller = TextEditingController(
+      text: contactMeFormBloc.state.subject.value,
+    );
     return BlocBuilder<ContactMeFormBloc, ContactMeFormState>(
       builder: (BuildContext context, ContactMeFormState state) {
         return TextFormField(
-          initialValue: state.subject.value,
+          controller: controller,
           keyboardType: TextInputType.text,
           focusNode: focusNode,
           textCapitalization: TextCapitalization.sentences,
