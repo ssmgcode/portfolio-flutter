@@ -50,6 +50,7 @@ class MyApp extends StatelessWidget {
         themeMode: themeMode,
         routeInformationParser: MyAppRouteInformationParser(),
         routerDelegate: MyAppRouterDelegate(),
+        backButtonDispatcher: RootBackButtonDispatcher(),
         scaffoldMessengerKey: SnackBarService.messengerKey,
       ),
     );

@@ -3,8 +3,8 @@ import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/config/app_theme.dart';
 import 'package:portfolio/config/personal_information.dart';
-import 'package:portfolio/utils/open_url_with_copy_to_clipboard_fallback.dart'
-    as utils;
+import 'package:portfolio/utils/utils.dart' as utils
+    show openUrlWithCopyToClipboardFallback;
 
 /// The general footer of the application.
 class Footer extends StatelessWidget {

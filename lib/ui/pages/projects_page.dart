@@ -10,8 +10,8 @@ import 'package:portfolio/ui/widgets/project_card/project_card.dart';
 const List<Project> myProjects = [
   Project(
     name: 'SSMG Code Portfolio',
-    description:
-        'My personal portfolio built on Flutter and available for Web and Android.',
+    description: '''
+My personal portfolio built on Flutter and available for Web and Android.''',
     technologies: [
       Technology.dart,
       Technology.flutter,
@@ -57,7 +57,7 @@ class ProjectsPage extends StatelessWidget {
                       horizontal: 15.0,
                     ),
                     child: SizedBox(
-                      width: 1000,
+                      width: 700,
                       child: Column(
                         children: <Widget>[
                           for (Project project in myProjects)

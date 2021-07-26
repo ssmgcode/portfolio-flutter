@@ -51,7 +51,12 @@ class MyAppRouterDelegate extends RouterDelegate<MyAppPathConfiguration>
     if (!didPop) {
       return false;
     }
-    _routerPageManager.didPop(route.settings);
+    popRoute();
     return true;
+  }
+
+  @override
+  Future<bool> popRoute() {
+    return _routerPageManager.popRoute();
   }
 }

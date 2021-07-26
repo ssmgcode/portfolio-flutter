@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:portfolio/models/project_model.dart';
-import 'package:portfolio/utils/open_url_with_copy_to_clipboard_fallback.dart'
-    as utils;
+import 'package:portfolio/utils/utils.dart' as utils
+    show openUrlWithCopyToClipboardFallback;
 
 /// Contains the action buttons to go to links of the project.
 class ProjectCardFooter extends StatelessWidget {

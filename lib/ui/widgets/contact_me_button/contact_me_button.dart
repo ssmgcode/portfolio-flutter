@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/router/page_manager.dart';
 
 /// Creates a contact me button to go to contact me page.
 class ContactMeButton extends StatelessWidget {
@@ -16,7 +17,9 @@ class ContactMeButton extends StatelessWidget {
   /// space.
   final double? width;
 
-  void _onPressed() {}
+  void _onPressed(BuildContext context) =>
+      RouterPageManager.of(context).openContactMePage();
+
   final _content = const Text('Contact Me');
 
   @override
@@ -25,11 +28,11 @@ class ContactMeButton extends StatelessWidget {
       width: width,
       child: isPrimary
           ? ElevatedButton(
-              onPressed: _onPressed,
+              onPressed: () => _onPressed(context),
               child: _content,
             )
           : OutlinedButton(
-              onPressed: _onPressed,
+              onPressed: () => _onPressed(context),
               child: _content,
             ),
     );
