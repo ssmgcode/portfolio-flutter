@@ -20,6 +20,9 @@ class ContactMeHomePageSection extends StatelessWidget {
               '''
 If you wish to have an online shop, a landing page, a mobile application, and more, do not miss this opportunity, contact me now!''',
             ),
+            SizedBox(
+              height: 10,
+            ),
             ContactMeButton(
               isPrimary: false,
               width: double.infinity,
