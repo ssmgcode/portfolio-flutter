@@ -6,7 +6,13 @@ import 'package:formz/formz.dart';
 /// Creates the submit button for `ContactMeForm`
 class ContactMeFormSubmitButton extends StatelessWidget {
   /// Creates the submit button for `ContactMeForm`
-  const ContactMeFormSubmitButton({Key? key}) : super(key: key);
+  const ContactMeFormSubmitButton({
+    Key? key,
+    this.onPressed,
+  }) : super(key: key);
+
+  /// A callback to execute before submitting form.
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +29,12 @@ class ContactMeFormSubmitButton extends StatelessWidget {
           child: ElevatedButton.icon(
             onPressed:
                 state.status.isValidated && !state.status.isSubmissionInProgress
-                    ? () => contactMeFormBloc.add(FormSubmitted())
+                    ? () {
+                        if (onPressed != null) {
+                          onPressed!();
+                        }
+                        contactMeFormBloc.add(FormSubmitted());
+                      }
                     : null,
             icon: state.status.isSubmissionInProgress
                 ? SizedBox(
