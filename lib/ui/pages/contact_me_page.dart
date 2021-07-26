@@ -107,34 +107,46 @@ class __ContactMeFormState extends State<_ContactMeForm> {
     super.dispose();
   }
 
+  void unfocusActiveField() {
+    _nameFocusNode.unfocus();
+    _emailFocusNode.unfocus();
+    _subjectFocusNode.unfocus();
+    _messageFocusNode.unfocus();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ContactMeFormBloc, ContactMeFormState>(
-      listener: (BuildContext context, ContactMeFormState state) {
-        if (state.status.isSubmissionSuccess) {
-          SnackBarService.messengerKey.currentState!.hideCurrentSnackBar();
-          SnackBarService.showSuccessSnackBar(
-            message: 'Thank you for contacting me!',
-          );
-        }
-        if (state.status.isSubmissionFailure) {
-          SnackBarService.messengerKey.currentState!.hideCurrentSnackBar();
-          SnackBarService.showErrorSnackBar(
-            message: "Can't send the email, try again later.",
-          );
-        }
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0),
-        child: SizedBox(
-          width: 700,
-          child: Card(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 20.0,
-                horizontal: 15.0,
-              ),
-              child: Form(
+    final contactMeFormBloc = BlocProvider.of<ContactMeFormBloc>(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      child: SizedBox(
+        width: 700,
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 20.0,
+              horizontal: 15.0,
+            ),
+            child: BlocConsumer<ContactMeFormBloc, ContactMeFormState>(
+              listener: (BuildContext context, ContactMeFormState state) {
+                if (state.status.isSubmissionSuccess) {
+                  SnackBarService.messengerKey.currentState!
+                      .hideCurrentSnackBar();
+                  SnackBarService.showSuccessSnackBar(
+                    message: 'Thank you for contacting me!',
+                  );
+                  contactMeFormBloc.add(ResetForm());
+                }
+                if (state.status.isSubmissionFailure) {
+                  SnackBarService.messengerKey.currentState!
+                      .hideCurrentSnackBar();
+                  SnackBarService.showErrorSnackBar(
+                    message: "Can't send the email, try again later.",
+                  );
+                }
+              },
+              buildWhen: (_, ContactMeFormState state) => state.status.isPure,
+              builder: (_, __) => Form(
                 child: Column(
                   children: <Widget>[
                     NameInput(
@@ -161,7 +173,9 @@ class __ContactMeFormState extends State<_ContactMeForm> {
                     const SizedBox(
                       height: 20.0,
                     ),
-                    const ContactMeFormSubmitButton(),
+                    ContactMeFormSubmitButton(
+                      onPressed: unfocusActiveField,
+                    ),
                   ],
                 ),
               ),

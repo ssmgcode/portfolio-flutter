@@ -157,6 +157,8 @@ class ContactMeFormBloc extends Bloc<ContactMeFormEvent, ContactMeFormState> {
           status: FormzStatus.submissionSuccess,
         );
       }
+    } else if (event is ResetForm) {
+      yield const ContactMeFormState();
     }
   }
 }

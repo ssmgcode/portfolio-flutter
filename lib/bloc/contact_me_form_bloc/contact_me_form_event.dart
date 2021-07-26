@@ -72,3 +72,6 @@ class SubjectUnfocused extends ContactMeFormEvent {}
 
 /// The event to execute when the form is submitted.
 class FormSubmitted extends ContactMeFormEvent {}
+
+/// The event to reset the form.
+class ResetForm extends ContactMeFormEvent {}
