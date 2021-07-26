@@ -18,7 +18,7 @@ class ContactMeButton extends StatelessWidget {
   final double? width;
 
   void _onPressed(BuildContext context) =>
-      RouterPageManager.of(context).openProjectsPage();
+      RouterPageManager.of(context).openContactMePage();
 
   final _content = const Text('Contact Me');
 
