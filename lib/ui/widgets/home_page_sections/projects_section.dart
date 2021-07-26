@@ -3,8 +3,8 @@ import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:portfolio/config/personal_information.dart';
 import 'package:portfolio/router/page_manager.dart';
 import 'package:portfolio/ui/widgets/custom_card.dart';
-import 'package:portfolio/utils/open_url_with_copy_to_clipboard_fallback.dart'
-    as utils;
+import 'package:portfolio/utils/utils.dart' as utils
+    show openUrlWithCopyToClipboardFallback;
 
 /// Creates the section that contains information about projects I have done.
 class ProjectsHomePageSection extends StatelessWidget {
