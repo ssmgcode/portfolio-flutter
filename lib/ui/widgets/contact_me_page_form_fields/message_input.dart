@@ -26,6 +26,7 @@ class MessageInput extends StatelessWidget {
           controller: controller,
           focusNode: focusNode,
           keyboardType: TextInputType.multiline,
+          textCapitalization: TextCapitalization.sentences,
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
             labelText: 'Message',

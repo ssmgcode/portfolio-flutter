@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:portfolio/bloc/application_theme/application_theme_cubit.dart';
 import 'package:portfolio/bloc/contact_me_form_bloc/contact_me_form_bloc.dart';
 import 'package:portfolio/config/app_theme.dart';
@@ -8,8 +9,9 @@ import 'package:portfolio/router/my_app_router_delegate.dart';
 import 'package:portfolio/services/snackbar_service.dart';
 import 'package:portfolio/shared_preferences/user_preferences.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load();
   await UserPreferences().initPreferences();
   runApp(const MyAppStateProvider());
 }
