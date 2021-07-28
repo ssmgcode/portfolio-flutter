@@ -63,7 +63,7 @@ class ApplicationMenu extends StatelessWidget {
             leading: const Icon(Icons.info_outline_rounded),
             onTap: () => showAboutDialog(
               context: context,
-              applicationVersion: '0.5.0',
+              applicationVersion: '1.0.0',
               applicationName: 'SSMG Code portfolio',
               applicationIcon: Image.asset(
                 'assets/ssmg-logo.png',
