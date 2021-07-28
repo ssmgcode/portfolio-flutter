@@ -11,7 +11,7 @@ import 'package:portfolio/shared_preferences/user_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load();
+  await dotenv.load(fileName: 'assets/.env');
   await UserPreferences().initPreferences();
   runApp(const MyAppStateProvider());
 }
