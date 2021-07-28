@@ -6,11 +6,11 @@ const RESOURCES = {
   "icons/Icon-192.png": "324cc58b8f03c3a0f63577dfd436f9be",
 "icons/Icon-512.png": "4f1f71e0d3d389419e346ba0654622c1",
 "manifest.json": "cbe5b7234ca65d424d74e2a818078d33",
-"assets/AssetManifest.json": "d6034ffbfa505f624c926bd922b46d38",
+"assets/AssetManifest.json": "43c0df6ee197d22492c1d5bf79ee97ad",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/flutter_boxicons/fonts/Boxicons.ttf": "f5b4c7852b2cea0ec78fcbd63d6547ae",
 "assets/FontManifest.json": "9e17761df51ff7cd345b96ec3f517562",
-"assets/NOTICES": "76bfca2b13248c44e613b1fff19c7ed1",
+"assets/NOTICES": "bb1f25f5261803ff46f850976b512ef8",
 "assets/assets/ssmg-logo.svg": "d397622b80c6a39e77fbe47cacb669a1",
 "assets/assets/lost-animation.json": "9dc08d669886a5640fef53a02ba220ab",
 "assets/assets/heart_animation.json": "f370fa7284ed0663055b258059c0c0ae",
@@ -24,7 +24,7 @@ const RESOURCES = {
 "assets/fonts/IBMPlexSans-Regular.ttf": "5885b648efeb838142e33016f67b4a35",
 "assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
 "assets/fonts/IBMPlexSans-Medium.ttf": "78186d5cb07b0f49ccf7e0ef0ce013ea",
-"main.dart.js": "f7c35f4c7743877f94bd9f174669a27e",
+"main.dart.js": "45dfb6d4f0094ed02adf82e03c9591f9",
 "favicon.ico": "e9b267c2e60dfb566516a87ae15b7545",
 "splash/img/light-2x.png": "4c222a01a0666a8321edfa465e8b4f9c",
 "splash/img/light-3x.png": "93a0ea0b62adf5ba15e600d8a72689bb",
@@ -33,9 +33,9 @@ const RESOURCES = {
 "splash/img/dark-1x.png": "4d7152593e7df52d64e96b56fb3cdeec",
 "splash/img/dark-3x.png": "93a0ea0b62adf5ba15e600d8a72689bb",
 "splash/style.css": "aae6c50a132912bc51d86557dad7e886",
-"version.json": "79b634da95410e80686641c9e89e3513",
-"index.html": "f0b167830533539f265905b9e93103c8",
-"/": "f0b167830533539f265905b9e93103c8"
+"version.json": "3bb6c18a962c0ceaf2e2d48929cf0913",
+"index.html": "ffc9ae4f21fc4fc07b36caa616e90e62",
+"/": "ffc9ae4f21fc4fc07b36caa616e90e62"
 };
 
 // The application shell files that are downloaded before a service worker can
