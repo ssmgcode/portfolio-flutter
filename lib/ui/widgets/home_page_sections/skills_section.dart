@@ -21,7 +21,7 @@ class SkillsHomePageSection extends StatelessWidget {
           ),
           Skill(
             name: 'Flutter',
-            percent: 0.40,
+            percent: 0.5,
             color: Color.fromRGBO(69, 209, 253, 1),
           ),
           Skill(
@@ -41,12 +41,12 @@ class SkillsHomePageSection extends StatelessWidget {
           ),
           Skill(
             name: 'Git',
-            percent: 0.30,
+            percent: 0.3,
             color: Color.fromRGBO(244, 77, 39, 1),
           ),
           Skill(
             name: 'Rust',
-            percent: 0.05,
+            percent: 0.15,
             color: Color.fromRGBO(255, 200, 50, 1),
           ),
         ],

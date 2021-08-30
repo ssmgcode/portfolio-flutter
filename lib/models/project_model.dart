@@ -1,4 +1,5 @@
 import 'package:portfolio/models/technologies_enum.dart';
+export './technologies_enum.dart';
 
 /// The model of the projects to present in `ProjectsPage`.
 class Project {

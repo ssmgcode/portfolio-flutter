@@ -1,6 +1,6 @@
 /// Contains the most common display breakpoints.
 class DisplayBreakpoints {
-  /// This class is not meant to be instantiated or extended; this constructor
+  // This class is not meant to be instantiated or extended; this constructor
   // prevents instantiation and extension.
   DisplayBreakpoints._();
 
