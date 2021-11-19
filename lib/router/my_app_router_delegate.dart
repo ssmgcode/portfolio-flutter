@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:portfolio/router/my_app_path_configuration.dart';
 import 'package:portfolio/router/page_manager.dart';
+import 'package:provider/provider.dart';
 
 /// The implementation of [RouterDelegate] for my application.
 class MyAppRouterDelegate extends RouterDelegate<MyAppPathConfiguration>

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:portfolio/bloc/contact_me_form_bloc/contact_me_form_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:portfolio/bloc/contact_me_form_bloc/contact_me_form_bloc.dart';
 
 /// Creates the submit button for `ContactMeForm`
 class ContactMeFormSubmitButton extends StatelessWidget {

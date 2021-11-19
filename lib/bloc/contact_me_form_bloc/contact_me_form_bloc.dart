@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:formz/formz.dart';
+import 'package:meta/meta.dart';
 import 'package:portfolio/models/contact_me_form_input_models/contact_me_form_input_models.dart';
 import 'package:portfolio/services/send_contact_me_email_service.dart';
 
