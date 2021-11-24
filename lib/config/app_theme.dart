@@ -28,7 +28,7 @@ class AppTheme {
     primaryColor: _lightPrimaryColor,
     primarySwatch: Colors.blue,
     toggleableActiveColor: _accentColor,
-    scaffoldBackgroundColor: const Color.fromRGBO(248, 249, 250, 1),
+    scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
       backgroundColor: _lightPrimaryColor,
       foregroundColor: Colors.black,
