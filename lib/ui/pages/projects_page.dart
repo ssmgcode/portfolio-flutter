@@ -14,52 +14,43 @@ class ProjectsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      body: LayoutBuilder(
-        builder: (_, BoxConstraints boxConstraints) => SingleChildScrollView(
-          physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics(),
-          ),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: boxConstraints.maxHeight,
-            ),
-            child: IntrinsicHeight(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 15.0,
-                    ),
-                    child: Text(
-                      'Projects',
-                      style: Theme.of(context).textTheme.headline3,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 15.0,
-                    ),
-                    child: SizedBox(
-                      width: 700,
-                      child: Column(
-                        children: <Widget>[
-                          for (Project project in PersonalInformation.projects)
-                            ProjectCard(
-                              project: project,
-                            ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const Spacer(),
-                  const SizedBox(
-                    height: 252,
-                    child: Footer(),
-                  ),
-                ],
+      body: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 15.0,
+              ),
+              child: Text(
+                'Projects',
+                style: Theme.of(context).textTheme.headline3,
               ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15.0,
+              ),
+              child: SizedBox(
+                width: 700,
+                child: Column(
+                  children: <Widget>[
+                    for (Project project in PersonalInformation.projects)
+                      ProjectCard(
+                        project: project,
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            const SizedBox(
+              height: 252,
+              child: Footer(),
+            ),
+          ],
         ),
       ),
     );
