@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/config/app_theme.dart';
 import 'package:portfolio/ui/widgets/app_bar.dart';
 import 'package:portfolio/ui/widgets/contact_me_button/contact_me_button.dart';
 import 'package:portfolio/ui/widgets/favorite_technologies_presentation.dart';
@@ -20,15 +19,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
         child: Column(
           children: <Widget>[
-            Container(
-              height: 80,
-              color: AppTheme.brandColor,
-            ),
             const SSMGPoster(),
             Padding(
               padding: const EdgeInsets.symmetric(

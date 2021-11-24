@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:portfolio/shared_preferences/user_preferences.dart';
 
 /// Cubit to provide the theme mode to the main root of the application.

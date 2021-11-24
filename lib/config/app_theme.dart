@@ -28,10 +28,10 @@ class AppTheme {
     primaryColor: _lightPrimaryColor,
     primarySwatch: Colors.blue,
     toggleableActiveColor: _accentColor,
-    scaffoldBackgroundColor: const Color.fromRGBO(248, 249, 250, 1),
+    scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
       backgroundColor: _lightPrimaryColor,
-      elevation: 3,
+      foregroundColor: Colors.black,
     ),
     cardColor: _lightPrimaryColor,
     bottomSheetTheme: const BottomSheetThemeData(
@@ -62,7 +62,7 @@ class AppTheme {
     scaffoldBackgroundColor: const Color.fromRGBO(25, 26, 27, 1),
     appBarTheme: const AppBarTheme(
       backgroundColor: _darkPrimaryColor,
-      elevation: 3,
+      foregroundColor: Colors.white,
     ),
     cardColor: _darkPrimaryColor,
     bottomSheetTheme: const BottomSheetThemeData(

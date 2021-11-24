@@ -22,9 +22,7 @@ class ContactMePage extends StatelessWidget {
       appBar: buildAppBar(context),
       body: LayoutBuilder(
         builder: (_, BoxConstraints boxConstraints) => SingleChildScrollView(
-          physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics(),
-          ),
+          physics: const AlwaysScrollableScrollPhysics(),
           child: ConstrainedBox(
             constraints: BoxConstraints(
               minHeight: boxConstraints.maxHeight,
