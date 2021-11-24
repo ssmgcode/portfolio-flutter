@@ -8,25 +8,25 @@ import 'package:portfolio/ui/widgets/application_menu.dart';
 AppBar buildAppBar(BuildContext context) {
   final size = MediaQuery.of(context).size;
   return AppBar(
-    // Use a [Builder] to get the right context.
-    title: Builder(
-      builder: (BuildContext context) => MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          onTap: () => RouterPageManager.of(context).openHomePage(),
-          child: SvgPicture.asset(
-            'assets/ssmg-logo.svg',
-            height: 30,
-            color: DefaultTextStyle.of(context).style.color,
-          ),
+    title: MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () => RouterPageManager.of(context).openHomePage(),
+        child: SvgPicture.asset(
+          'assets/ssmg-logo.svg',
+          height: 30,
+          color: AppBarTheme.of(context).foregroundColor,
         ),
       ),
     ),
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(
-        bottom: Radius.circular(10.0),
-      ),
-    ),
+    backgroundColor:
+        MaterialStateColor.resolveWith((Set<MaterialState> states) {
+      return states.contains(MaterialState.scrolledUnder)
+          ? Colors.blue.shade50
+          : AppBarTheme.of(context).backgroundColor!;
+    }),
+    elevation: 0,
+    toolbarHeight: 65,
     actions: <Widget>[
       IconButton(
         onPressed: () {
